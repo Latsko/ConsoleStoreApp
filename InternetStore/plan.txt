@@ -1,0 +1,71 @@
+Model:
+Product
+-productId | int | auto inkrementacja,
+-price | double | walidacja, price > 0
+-name | String | walidacja != null, !isBlank,
+  name.size > 0 && name.size < 50, only chars.
+-category | Category | musi być wypełnione.
+-quantity | int | quantity > 0
+Category
+-categoryId | int | auto inkrementacja,
+-name | String | walidacja != null, !isBlank,
+  name.size > 0 && name.size < 50, only chars.
+Order
+-orderId | int | auto inkrementacja,
+-orderNumber| String | losowo generowany ciąg 8
+  znaków
+-orderSum | double | wartość większa od 0.
+-clientName | String | walidacja != null, !isBlank,
+  name.size > 0 && name.size < 50, only chars.
+-clientSurname | String | walidacja != null, !isBlank,
+  name.size > 0 && name.size < 50, only chars.
+-clientAddress | String | walidacja != null, !isBlank,
+  name.size > 0 && name.size < 50
+-orderStatus | Enum | opłacone, anulowane, wysłane,
+w przygotowaniu
+-products | Map<Product, Integer> | wartość > 0
+Klasy-usługi:
+ProductService
+-Dodaj produkt MVP
+-Usuń produkt*
+-Pokaż wszystkie produkty MVP
+-Pokaż jeden produkt MVP
+...
+CategoryService
+-Dodaj kategorie MVP
+-Usuń kategorie
+-Pokaż wszystkie kategorie MVP
+-Pokaż jedną kategorie MVP
+...
+OrderService
+-Dodaj zamówienie MVP
+-Usuń zamówienie
+-Pokaż wszystkie zamówienia MVP
+-Pokaż jedno zamówienie MVP
+-Pokaż status
+-Zmień status
+Menu
+-----
+[1] Zamówienia ->
+	- Lista zamówień
+	- Konkretne zamówienie
+	- Dodaj zamówienie
+	- Usuń zamówienie *
+	- Edytuj zamówienie *
+	- Zmień status zamówienia changeStatus(CREATED)
+	- Pokaż status zamówienia
+	- Dodaj produkt do zamówienia addProductToOrder(productId, orderId, quantity) *
+	- Cofnij
+[2] Kategorie produktów ->
+	- Lista kategorii
+	- Konkretna kategoria
+	- Dodaj kategorie
+	- Usuń kategorie*
+	- Cofnij
+[3] Produkty ->
+	- Lista produktów
+	- Konkretny produkt
+	- Dodaj produkt
+	- Usuń produkt *
+	- Cofnij
+Exit
