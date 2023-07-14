@@ -18,6 +18,10 @@ public class Product {
         this.ID = lastID++;
     }
 
+    public void setID(int id){
+        this.ID = id;
+    }
+
     public int getID() {
         return ID;
     }
@@ -41,7 +45,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "price=" + price +
+                "id=" + ID +
+                ", price=" + price +
                 ", name='" + name + '\'' +
                 ", category=" + category +
                 ", quantity=" + quantity +
@@ -52,14 +57,15 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product product)) return false;
-        return Double.compare(product.price, price) == 0 &&
-                quantity == product.quantity &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(category, product.category);
+        return getID() == product.getID() &&
+                Double.compare(product.getPrice(), getPrice()) == 0 &&
+                getQuantity() == product.getQuantity() &&
+                Objects.equals(getName(), product.getName()) &&
+                Objects.equals(getCategory(), product.getCategory());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, name, category, quantity);
+        return Objects.hash(getID(), getPrice(), getName(), getCategory(), getQuantity());
     }
 }

@@ -1,394 +1,394 @@
 [
-                                                        {
-                                                                                                                "quantity": 10,
-                                                                                                                "price": 2000,
-                                                                                                                "name": "LG 32A5KQ",
-                                                                                                                "id": 0,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 3500,
-                                                                                                                "name": "LIN 32D1700",
-                                                                                                                "id": 1,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 18,
-                                                                                                                "price": 600,
-                                                                                                                "name": "BLAUPUNKT",
-                                                                                                                "id": 2,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 5,
-                                                                                                                "price": 490,
-                                                                                                                "name": "JVC LT-32VH2105",
-                                                                                                                "id": 3,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 20,
-                                                                                                                "price": 900,
-                                                                                                                "name": "HISENSE 32A4BG",
-                                                                                                                "id": 4,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 10,
-                                                                                                                "price": 1300,
-                                                                                                                "name": "PHILIPS 32PFS5905",
-                                                                                                                "id": 5,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 14,
-                                                                                                                "price": 2300,
-                                                                                                                "name": "LG 32H57705",
-                                                                                                                "id": 6,
-                                                                                                                "category": "TV"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 19,
-                                                                                                                "price": 3399,
-                                                                                                                "name": "Lodówka SAMSUNG RB38T774DB1",
-                                                                                                                "id": 7,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 8,
-                                                                                                                "price": 2199,
-                                                                                                                "name": "Lodówka BEKO B5RCNA365HXB",
-                                                                                                                "id": 8,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 14,
-                                                                                                                "price": 4000,
-                                                                                                                "name": "Lodówka HAIER A3FE737CMJ",
-                                                                                                                "id": 9,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 12,
-                                                                                                                "price": 3200,
-                                                                                                                "name": "Pralka ELECTROLUX MEW7F349PXP",
-                                                                                                                "id": 10,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 7,
-                                                                                                                "price": 3900,
-                                                                                                                "name": "Pralka SAMSUNG BESPOKE WW11BB744DGB",
-                                                                                                                "id": 11,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 1500,
-                                                                                                                "name": "Kuchnia GORENJE MEKS5121S ExtraSteam",
-                                                                                                                "id": 12,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 1850,
-                                                                                                                "name": "Kuchnia AMICA 6117GET3",
-                                                                                                                "id": 13,
-                                                                                                                "category": "AGD"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 16,
-                                                                                                                "price": 3670,
-                                                                                                                "name": "Komputer APPLE Mac Mini 2023",
-                                                                                                                "id": 14,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 18,
-                                                                                                                "price": 4199,
-                                                                                                                "name": "Komputer MAD DOG MD5600X-A03V2",
-                                                                                                                "id": 15,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 10,
-                                                                                                                "price": 3700,
-                                                                                                                "name": "Komputer ACER Nitro N50-640",
-                                                                                                                "id": 16,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 2,
-                                                                                                                "price": 5500,
-                                                                                                                "name": "Laptop DELL G15 5525-8403",
-                                                                                                                "id": 17,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 9,
-                                                                                                                "price": 2900,
-                                                                                                                "name": "Laptop LENOVO IdeaPad",
-                                                                                                                "id": 18,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 5,
-                                                                                                                "price": 3500,
-                                                                                                                "name": "Laptop HP Victus",
-                                                                                                                "id": 19,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 1850,
-                                                                                                                "name": "Laptop HP 15-dw3123nw",
-                                                                                                                "id": 20,
-                                                                                                                "category": "Komputery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 16,
-                                                                                                                "price": 3670,
-                                                                                                                "name": "Smartfon SAMSUNG Galaxy S23",
-                                                                                                                "id": 21,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 28,
-                                                                                                                "price": 4199,
-                                                                                                                "name": "Smartfon APPLE iPhone 14 128GB",
-                                                                                                                "id": 22,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 400,
-                                                                                                                "name": "Smartfon XIAOMI Redmi 12C",
-                                                                                                                "id": 23,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 21,
-                                                                                                                "price": 5500,
-                                                                                                                "name": "Smartfon APPLE iPhone 13 256GB",
-                                                                                                                "id": 24,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 19,
-                                                                                                                "price": 2900,
-                                                                                                                "name": "Smartfon XIAOMI Redmi Note 12",
-                                                                                                                "id": 25,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 3500,
-                                                                                                                "name": "Smartfon SAMSUNG Galaxy S20",
-                                                                                                                "id": 26,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 8,
-                                                                                                                "price": 1850,
-                                                                                                                "name": "Smartfon SAMSUNG Galaxy A34",
-                                                                                                                "id": 27,
-                                                                                                                "category": "Smartfony"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 6140,
-                                                                                                                "name": "Atlas EB FIT 9500",
-                                                                                                                "id": 28,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 18,
-                                                                                                                "price": 120,
-                                                                                                                "name": "Sztanga HMS SGP15",
-                                                                                                                "id": 29,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 400,
-                                                                                                                "name": "Sztanga PURE 2 IMPROVE",
-                                                                                                                "id": 30,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 21,
-                                                                                                                "price": 89,
-                                                                                                                "name": "Obciążniki na ręce i kostki EB FIT",
-                                                                                                                "id": 31,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 13,
-                                                                                                                "price": 800,
-                                                                                                                "name": "Worek treningowy TIGUAR TI-FWB060",
-                                                                                                                "id": 32,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 25,
-                                                                                                                "price": 350,
-                                                                                                                "name": "Ławka do ćwiczeń EB FIT ",
-                                                                                                                "id": 33,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 4,
-                                                                                                                "price": 850,
-                                                                                                                "name": "Ławka do ćwiczeń MARBO SPORT",
-                                                                                                                "id": 34,
-                                                                                                                "category": "Sport"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 2300,
-                                                                                                                "name": "Konsola SONY PlayStation 5 Digital",
-                                                                                                                "id": 35,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 18,
-                                                                                                                "price": 2700,
-                                                                                                                "name": "Konsola SONY PlayStation 5",
-                                                                                                                "id": 36,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 2600,
-                                                                                                                "name": "Konsola MICROSOFT XBOX Series X",
-                                                                                                                "id": 37,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 25,
-                                                                                                                "price": 1700,
-                                                                                                                "name": "Konsola MICROSOFT XBOX Series S",
-                                                                                                                "id": 38,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 3,
-                                                                                                                "price": 1200,
-                                                                                                                "name": "Kierownica LOGITECH G920",
-                                                                                                                "id": 39,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 27,
-                                                                                                                "price": 1550,
-                                                                                                                "name": "Konsola NINTENDO Switch Oled",
-                                                                                                                "id": 40,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 4,
-                                                                                                                "price": 1850,
-                                                                                                                "name": "Gogle VR OCULUS Quest 2",
-                                                                                                                "id": 41,
-                                                                                                                "category": "Gaming"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 5,
-                                                                                                                "price": 1900,
-                                                                                                                "name": "Aparat CANON EOS 2000D",
-                                                                                                                "id": 42,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 15,
-                                                                                                                "price": 8700,
-                                                                                                                "name": "Aparat NIKON D780 Body",
-                                                                                                                "id": 43,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 3600,
-                                                                                                                "name": "Aparat CANON EOS 250D ",
-                                                                                                                "id": 44,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 8,
-                                                                                                                "price": 3100,
-                                                                                                                "name": "Aparat SONY ZV-1 Czarny",
-                                                                                                                "id": 45,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 13,
-                                                                                                                "price": 4200,
-                                                                                                                "name": "Aparat NIKON Coolpix P1000",
-                                                                                                                "id": 46,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 7,
-                                                                                                                "price": 3300,
-                                                                                                                "name": "Aparat CANON EOS R50",
-                                                                                                                "id": 47,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 14,
-                                                                                                                "price": 8450,
-                                                                                                                "name": "Aparat SONY Alpha A7 III",
-                                                                                                                "id": 48,
-                                                                                                                "category": "Kamery"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 25,
-                                                                                                                "price": 300,
-                                                                                                                "name": "LEGO City Łódź podwodna badacza dna morskiego",
-                                                                                                                "id": 49,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 18,
-                                                                                                                "price": 3700,
-                                                                                                                "name": "LEGO Star Wars AT-AT 75313",
-                                                                                                                "id": 50,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 16,
-                                                                                                                "price": 2600,
-                                                                                                                "name": "LEGO Marvel Hulkbuster 76210 ",
-                                                                                                                "id": 51,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 4,
-                                                                                                                "price": 310,
-                                                                                                                "name": "Zabawka drewniana UGEARS",
-                                                                                                                "id": 52,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 23,
-                                                                                                                "price": 400,
-                                                                                                                "name": "Zabawka drewniana modele 3D Sejf",
-                                                                                                                "id": 53,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 17,
-                                                                                                                "price": 100,
-                                                                                                                "name": "Wyrzutnia Nerf Elite 2.0",
-                                                                                                                "id": 54,
-                                                                                                                "category": "Zabawki"
-                                                        },
-                                                        {
-                                                                                                                "quantity": 16,
-                                                                                                                "price": 85,
-                                                                                                                "name": "Wyrzutnia HASBRO",
-                                                                                                                "id": 55,
-                                                                                                                "category": "Zabawki"
-                                                        }
+    {
+        "quantity": 10,
+        "price": 2000,
+        "name": "LG 32A5KQ",
+        "id": 0,
+        "category": "TV"
+    },
+    {
+        "quantity": 15,
+        "price": 3500,
+        "name": "LIN 32D1700",
+        "id": 1,
+        "category": "TV"
+    },
+    {
+        "quantity": 18,
+        "price": 600,
+        "name": "BLAUPUNKT",
+        "id": 2,
+        "category": "TV"
+    },
+    {
+        "quantity": 5,
+        "price": 490,
+        "name": "JVC LT-32VH2105",
+        "id": 3,
+        "category": "TV"
+    },
+    {
+        "quantity": 20,
+        "price": 900,
+        "name": "HISENSE 32A4BG",
+        "id": 4,
+        "category": "TV"
+    },
+    {
+        "quantity": 10,
+        "price": 1300,
+        "name": "PHILIPS 32PFS5905",
+        "id": 5,
+        "category": "TV"
+    },
+    {
+        "quantity": 14,
+        "price": 2300,
+        "name": "LG 32H57705",
+        "id": 6,
+        "category": "TV"
+    },
+    {
+        "quantity": 19,
+        "price": 3399,
+        "name": "Lodówka SAMSUNG RB38T774DB1",
+        "id": 7,
+        "category": "AGD"
+    },
+    {
+        "quantity": 8,
+        "price": 2199,
+        "name": "Lodówka BEKO B5RCNA365HXB",
+        "id": 8,
+        "category": "AGD"
+    },
+    {
+        "quantity": 14,
+        "price": 4000,
+        "name": "Lodówka HAIER A3FE737CMJ",
+        "id": 9,
+        "category": "AGD"
+    },
+    {
+        "quantity": 12,
+        "price": 3200,
+        "name": "Pralka ELECTROLUX MEW7F349PXP",
+        "id": 10,
+        "category": "AGD"
+    },
+    {
+        "quantity": 7,
+        "price": 3900,
+        "name": "Pralka SAMSUNG BESPOKE WW11BB744DGB",
+        "id": 11,
+        "category": "AGD"
+    },
+    {
+        "quantity": 15,
+        "price": 1500,
+        "name": "Kuchnia GORENJE MEKS5121S ExtraSteam",
+        "id": 12,
+        "category": "AGD"
+    },
+    {
+        "quantity": 17,
+        "price": 1850,
+        "name": "Kuchnia AMICA 6117GET3",
+        "id": 13,
+        "category": "AGD"
+    },
+    {
+        "quantity": 16,
+        "price": 3670,
+        "name": "Komputer APPLE Mac Mini 2023",
+        "id": 14,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 18,
+        "price": 4199,
+        "name": "Komputer MAD DOG MD5600X-A03V2",
+        "id": 15,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 10,
+        "price": 3700,
+        "name": "Komputer ACER Nitro N50-640",
+        "id": 16,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 2,
+        "price": 5500,
+        "name": "Laptop DELL G15 5525-8403",
+        "id": 17,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 9,
+        "price": 2900,
+        "name": "Laptop LENOVO IdeaPad",
+        "id": 18,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 5,
+        "price": 3500,
+        "name": "Laptop HP Victus",
+        "id": 19,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 17,
+        "price": 1850,
+        "name": "Laptop HP 15-dw3123nw",
+        "id": 20,
+        "category": "Komputery"
+    },
+    {
+        "quantity": 16,
+        "price": 3670,
+        "name": "Smartfon SAMSUNG Galaxy S23",
+        "id": 21,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 28,
+        "price": 4199,
+        "name": "Smartfon APPLE iPhone 14 128GB",
+        "id": 22,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 17,
+        "price": 400,
+        "name": "Smartfon XIAOMI Redmi 12C",
+        "id": 23,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 21,
+        "price": 5500,
+        "name": "Smartfon APPLE iPhone 13 256GB",
+        "id": 24,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 19,
+        "price": 2900,
+        "name": "Smartfon XIAOMI Redmi Note 12",
+        "id": 25,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 15,
+        "price": 3500,
+        "name": "Smartfon SAMSUNG Galaxy S20",
+        "id": 26,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 8,
+        "price": 1850,
+        "name": "Smartfon SAMSUNG Galaxy A34",
+        "id": 27,
+        "category": "Smartfony"
+    },
+    {
+        "quantity": 15,
+        "price": 6140,
+        "name": "Atlas EB FIT 9500",
+        "id": 28,
+        "category": "Sport"
+    },
+    {
+        "quantity": 18,
+        "price": 120,
+        "name": "Sztanga HMS SGP15",
+        "id": 29,
+        "category": "Sport"
+    },
+    {
+        "quantity": 17,
+        "price": 400,
+        "name": "Sztanga PURE 2 IMPROVE",
+        "id": 30,
+        "category": "Sport"
+    },
+    {
+        "quantity": 21,
+        "price": 89,
+        "name": "Obciążniki na ręce i kostki EB FIT",
+        "id": 31,
+        "category": "Sport"
+    },
+    {
+        "quantity": 13,
+        "price": 800,
+        "name": "Worek treningowy TIGUAR TI-FWB060",
+        "id": 32,
+        "category": "Sport"
+    },
+    {
+        "quantity": 25,
+        "price": 350,
+        "name": "Ławka do ćwiczeń EB FIT ",
+        "id": 33,
+        "category": "Sport"
+    },
+    {
+        "quantity": 4,
+        "price": 850,
+        "name": "Ławka do ćwiczeń MARBO SPORT",
+        "id": 34,
+        "category": "Sport"
+    },
+    {
+        "quantity": 15,
+        "price": 2300,
+        "name": "Konsola SONY PlayStation 5 Digital",
+        "id": 35,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 18,
+        "price": 2700,
+        "name": "Konsola SONY PlayStation 5",
+        "id": 36,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 17,
+        "price": 2600,
+        "name": "Konsola MICROSOFT XBOX Series X",
+        "id": 37,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 25,
+        "price": 1700,
+        "name": "Konsola MICROSOFT XBOX Series S",
+        "id": 38,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 3,
+        "price": 1200,
+        "name": "Kierownica LOGITECH G920",
+        "id": 39,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 27,
+        "price": 1550,
+        "name": "Konsola NINTENDO Switch Oled",
+        "id": 40,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 4,
+        "price": 1850,
+        "name": "Gogle VR OCULUS Quest 2",
+        "id": 41,
+        "category": "Gaming"
+    },
+    {
+        "quantity": 5,
+        "price": 1900,
+        "name": "Aparat CANON EOS 2000D",
+        "id": 42,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 15,
+        "price": 8700,
+        "name": "Aparat NIKON D780 Body",
+        "id": 43,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 17,
+        "price": 3600,
+        "name": "Aparat CANON EOS 250D ",
+        "id": 44,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 8,
+        "price": 3100,
+        "name": "Aparat SONY ZV-1 Czarny",
+        "id": 45,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 13,
+        "price": 4200,
+        "name": "Aparat NIKON Coolpix P1000",
+        "id": 46,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 7,
+        "price": 3300,
+        "name": "Aparat CANON EOS R50",
+        "id": 47,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 14,
+        "price": 8450,
+        "name": "Aparat SONY Alpha A7 III",
+        "id": 48,
+        "category": "Kamery"
+    },
+    {
+        "quantity": 25,
+        "price": 300,
+        "name": "LEGO City Łódź podwodna badacza dna morskiego",
+        "id": 49,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 18,
+        "price": 3700,
+        "name": "LEGO Star Wars AT-AT 75313",
+        "id": 50,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 16,
+        "price": 2600,
+        "name": "LEGO Marvel Hulkbuster 76210 ",
+        "id": 51,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 4,
+        "price": 310,
+        "name": "Zabawka drewniana UGEARS",
+        "id": 52,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 23,
+        "price": 400,
+        "name": "Zabawka drewniana modele 3D Sejf",
+        "id": 53,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 17,
+        "price": 100,
+        "name": "Wyrzutnia Nerf Elite 2.0",
+        "id": 54,
+        "category": "Zabawki"
+    },
+    {
+        "quantity": 16,
+        "price": 85,
+        "name": "Wyrzutnia HASBRO",
+        "id": 55,
+        "category": "Zabawki"
+    }
 ]
