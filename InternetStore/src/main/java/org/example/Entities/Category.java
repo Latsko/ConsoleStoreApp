@@ -8,6 +8,9 @@ public class Category {
     private final String name;
 
     public Category(String name) {
+        if(!name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$")) {
+            throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
+        }
         this.name = name;
         this.ID = lastID++;
     }

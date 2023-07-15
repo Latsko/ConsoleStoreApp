@@ -233,7 +233,7 @@
     {
         "quantity": 25,
         "price": 350,
-        "name": "Ławka do ćwiczeń EB FIT ",
+        "name": "Ławka do ćwiczeń EB FIT",
         "id": 33,
         "category": "Sport"
     },
@@ -310,7 +310,7 @@
     {
         "quantity": 17,
         "price": 3600,
-        "name": "Aparat CANON EOS 250D ",
+        "name": "Aparat CANON EOS 250D",
         "id": 44,
         "category": "Kamery"
     },
@@ -359,7 +359,7 @@
     {
         "quantity": 16,
         "price": 2600,
-        "name": "LEGO Marvel Hulkbuster 76210 ",
+        "name": "LEGO Marvel Hulkbuster 76210",
         "id": 51,
         "category": "Zabawki"
     },

@@ -76,7 +76,7 @@ public class CreateData {
             new Product(400, "Sztanga PURE 2 IMPROVE", categories[4], 17),
             new Product(89, "Obciążniki na ręce i kostki EB FIT", categories[4], 21),
             new Product(800, "Worek treningowy TIGUAR TI-FWB060", categories[4], 13),
-            new Product(350, "Ławka do ćwiczeń EB FIT ", categories[4], 25),
+            new Product(350, "Ławka do ćwiczeń EB FIT", categories[4], 25),
             new Product(850, "Ławka do ćwiczeń MARBO SPORT", categories[4], 4)
     };
 
@@ -93,7 +93,7 @@ public class CreateData {
     private final Product[] cameras = {
             new Product(1900, "Aparat CANON EOS 2000D", categories[6], 5),
             new Product(8700, "Aparat NIKON D780 Body", categories[6], 15),
-            new Product(3600, "Aparat CANON EOS 250D ", categories[6], 17),
+            new Product(3600, "Aparat CANON EOS 250D", categories[6], 17),
             new Product(3100, "Aparat SONY ZV-1 Czarny", categories[6], 8),
             new Product(4200, "Aparat NIKON Coolpix P1000", categories[6], 13),
             new Product(3300, "Aparat CANON EOS R50", categories[6], 7),
@@ -103,7 +103,7 @@ public class CreateData {
     private final Product[] toys = {
             new Product(300, "LEGO City Łódź podwodna badacza dna morskiego", categories[7], 25),
             new Product(3700, "LEGO Star Wars AT-AT 75313", categories[7], 18),
-            new Product(2600, "LEGO Marvel Hulkbuster 76210 ", categories[7], 16),
+            new Product(2600, "LEGO Marvel Hulkbuster 76210", categories[7], 16),
             new Product(310, "Zabawka drewniana UGEARS", categories[7], 4),
             new Product(400, "Zabawka drewniana modele 3D Sejf", categories[7], 23),
             new Product(100, "Wyrzutnia Nerf Elite 2.0", categories[7], 17),

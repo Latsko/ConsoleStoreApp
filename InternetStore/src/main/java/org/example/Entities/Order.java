@@ -16,11 +16,21 @@ public class Order {
     private OrderStatus status;
 
     public Order(String orderNumber, String clientName, String clientSurName, String clientAddress) {
+        if (!clientName.matches("^[A-Za-z]+$") || !clientSurName.matches("^[A-Za-z]+$")) {
+            throw new IllegalArgumentException("Client name and surname must consist only of letters");
+        }
+        if (!clientAddress.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$")) {
+            throw new IllegalArgumentException("Client address must consist with no more than 6 words");
+        }
+        if (!orderNumber.matches("^[0-9]{8}$")) {
+            throw new IllegalArgumentException("Order number must be 8-digit number");
+        }
         this.orderNumber = orderNumber;
         this.clientName = clientName;
         this.clientSurName = clientSurName;
         this.clientAddress = clientAddress;
         this.ID = lastID++;
+        this.status = OrderStatus.CREATED;
     }
 
     @Override
