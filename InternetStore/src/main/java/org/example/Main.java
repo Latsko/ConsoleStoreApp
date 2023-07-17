@@ -1,7 +1,5 @@
 package org.example;
 
-import org.example.Entities.Category;
-import org.example.Entities.Order;
 import org.example.Entities.fileHandling.CreateData;
 import org.example.Entities.Product;
 import org.example.Entities.fileHandling.ReadData;
