@@ -11,14 +11,30 @@ public class Product {
     private final int quantity;
 
     public Product(double price, String name, Category category, int quantity) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price lesser then zero cannot be assigned");
+        }
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Quantity lesser then zero cannot be assigned");
+        }
+        if (category == null) {
+            throw new IllegalArgumentException("Category must not be null");
+        }
+        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
+            throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
+        }
         this.price = price;
+        this.quantity = quantity;
         this.name = name;
         this.category = category;
-        this.quantity = quantity;
         this.ID = lastID++;
     }
 
-    public void setID(int id){
+    private boolean isNameValid(final String name) {
+        return name.matches("^([a-zA-Z+\\-0-9.]+)(\\s[a-zA-Z+\\-0-9.]+){0,7}$") && name.length() <= 50;
+    }
+
+    public void setID(int id) {
         this.ID = id;
     }
 
