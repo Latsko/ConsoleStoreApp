@@ -13,10 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateData {
-    private static final Path path = Paths.get("data", "products.txt");
+    private static final Path productsPath = Paths.get("data", "products.txt");
+    private static final Path categoriesPath = Paths.get("data", "categories.txt");
 
-    public static Path getPath() {
-        return path;
+    public static Path getProductsPath() {
+        return productsPath;
+    }
+    public static Path getCategoriesPath() {
+        return  categoriesPath;
     }
 
     private final Category[] categories = {
@@ -129,8 +133,22 @@ public class CreateData {
 
         JSONArray jsonArray = new JSONArray(jsonObjects);
 
-        try(PrintWriter printer = new PrintWriter(path.toFile())) {
+        try(PrintWriter printer = new PrintWriter(productsPath.toFile())) {
            printer.print(jsonArray.toString(4));
+        }
+    }
+
+    public void createCategories() throws FileNotFoundException {
+        List<JSONObject> jsonObjects = new ArrayList<>();
+
+        for(Category category : categories) {
+            jsonObjects.add(new JSONObject()
+                    .put("id", category.getID())
+                    .put("name", category.getName()));
+        }
+        JSONArray jsonArray = new JSONArray(jsonObjects);
+        try(PrintWriter printer = new PrintWriter(categoriesPath.toFile())) {
+            printer.print(jsonArray.toString(4));
         }
     }
 }

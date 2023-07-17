@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         CreateData createData = new CreateData();
         createData.createProducts();
+        createData.createCategories();
 
         ReadData readData = new ReadData();
         List<Product> products = readData.readProductsFromFile();

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ReadData {
     public List<Product> readProductsFromFile() throws FileNotFoundException {
-        File file = CreateData.getPath().toFile();
+        File file = CreateData.getProductsPath().toFile();
 
         List<Product> productList = new ArrayList<>();
         JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
@@ -30,5 +30,20 @@ public class ReadData {
         }
 
         return productList;
+    }
+
+    public List<Category> readCategoriesFromFile() throws FileNotFoundException {
+        File file = CreateData.getCategoriesPath().toFile();
+
+        List<Category> categoryList = new ArrayList<>();
+        JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
+        for (int i = 0; i < read.length(); i++) {
+            String name = read.getJSONObject(i).getString("name");
+
+            Category currentCategory = new Category(name);
+            categoryList.add(currentCategory);
+        }
+
+        return categoryList;
     }
 }
