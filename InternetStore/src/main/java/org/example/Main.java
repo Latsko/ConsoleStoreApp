@@ -1,13 +1,9 @@
 package org.example;
 
-import org.example.Entities.Category;
-import org.example.Entities.Order;
 import org.example.Entities.fileHandling.CreateData;
-import org.example.Entities.Product;
-import org.example.Entities.fileHandling.ReadData;
+import org.example.Services.CategoryService;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -15,9 +11,9 @@ public class Main {
         createData.createProducts();
         createData.createCategories();
 
-        ReadData readData = new ReadData();
-        List<Product> products = readData.readProductsFromFile();
-        products.forEach(System.out::println);
-
+        CategoryService categoryService = new CategoryService();
+        categoryService.showAllCategories();
+        categoryService.showCategory("TV");
+        categoryService.showCategory("Sport");
     }
 }
