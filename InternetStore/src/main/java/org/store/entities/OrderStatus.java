@@ -1,4 +1,4 @@
-package org.example.Entities;
+package org.store.entities;
 
 public enum OrderStatus {
     PAID,

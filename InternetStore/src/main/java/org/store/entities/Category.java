@@ -1,4 +1,4 @@
-package org.example.Entities;
+package org.store.entities;
 
 import java.util.Objects;
 
@@ -7,12 +7,20 @@ public class Category {
     private final int ID;
     private final String name;
 
-    public Category(String name) {
+    public Category(final String name) {
+        checkName(name);
+        this.name = name;
+        this.ID = lastID++;
+    }
+
+    private void checkName(final String name) {
         if(!name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$")) {
             throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
         }
-        this.name = name;
-        this.ID = lastID++;
+    }
+
+    public static boolean nameIsCorrect(final String name) {
+        return name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$");
     }
 
     public int getID() {

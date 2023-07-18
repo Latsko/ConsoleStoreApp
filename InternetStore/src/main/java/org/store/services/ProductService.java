@@ -1,4 +1,4 @@
-package org.example.Services;
+package org.store.services;
 
 public class ProductService {
 }

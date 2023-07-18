@@ -1,7 +1,7 @@
-package org.example.Entities.fileHandling;
+package org.store.services.fileHandling;
 
-import org.example.Entities.Category;
-import org.example.Entities.Product;
+import org.store.entities.Category;
+import org.store.entities.Product;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateData {
-    private static final Path productsPath = Paths.get("data", "products.txt");
-    private static final Path categoriesPath = Paths.get("data", "categories.txt");
+    private static final Path productsPath = Paths.get("data", "products.json");
+    private static final Path categoriesPath = Paths.get("data", "categories.json");
 
     public static Path getProductsPath() {
         return productsPath;
@@ -138,17 +138,26 @@ public class CreateData {
         }
     }
 
-    public void createCategories() throws FileNotFoundException {
+    public void createCategories(final List<Category> updatedCategories) throws FileNotFoundException {
         List<JSONObject> jsonObjects = new ArrayList<>();
 
-        for(Category category : categories) {
-            jsonObjects.add(new JSONObject()
-                    .put("id", category.getID())
-                    .put("name", category.getName()));
+        if(updatedCategories == null) {
+            for (Category category : categories) {
+                jsonObjects.add(new JSONObject()
+                        .put("id", category.getID())
+                        .put("name", category.getName()));
+            }
+        } else {
+            for (Category category : updatedCategories) {
+                jsonObjects.add(new JSONObject()
+                        .put("id", category.getID())
+                        .put("name", category.getName()));
+            }
         }
         JSONArray jsonArray = new JSONArray(jsonObjects);
         try(PrintWriter printer = new PrintWriter(categoriesPath.toFile())) {
             printer.print(jsonArray.toString(4));
         }
     }
+
 }
