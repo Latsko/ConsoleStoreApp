@@ -1,34 +1,42 @@
 [
     {
         "name": "TV",
-        "id": 0
+        "id": 8
     },
     {
         "name": "AGD",
-        "id": 1
+        "id": 9
     },
     {
         "name": "Komputery",
-        "id": 2
+        "id": 10
     },
     {
         "name": "Smartfony",
-        "id": 3
+        "id": 11
     },
     {
         "name": "Sport",
-        "id": 4
+        "id": 12
     },
     {
         "name": "Gaming",
-        "id": 5
+        "id": 13
     },
     {
         "name": "Kamery",
-        "id": 6
+        "id": 14
     },
     {
         "name": "Zabawki",
-        "id": 7
+        "id": 15
+    },
+    {
+        "name": "some new name",
+        "id": 16
+    },
+    {
+        "name": "nazwa",
+        "id": 18
     }
 ]

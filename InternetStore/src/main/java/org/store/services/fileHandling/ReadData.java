@@ -1,7 +1,7 @@
-package org.example.Entities.fileHandling;
+package org.store.services.fileHandling;
 
-import org.example.Entities.Category;
-import org.example.Entities.Product;
+import org.store.entities.Category;
+import org.store.entities.Product;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 

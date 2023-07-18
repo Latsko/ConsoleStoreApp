@@ -1,4 +1,4 @@
-package org.example.Entities;
+package org.store.entities;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ public class Product {
     private final Category category;
     private final int quantity;
 
-    public Product(double price, String name, Category category, int quantity) {
+    public Product(final double price, final String name, final Category category, final int quantity) {
         if (price < 0) {
             throw new IllegalArgumentException("Price lesser then zero cannot be assigned");
         }
@@ -30,11 +30,7 @@ public class Product {
         this.ID = lastID++;
     }
 
-    private boolean isNameValid(final String name) {
-        return name.matches("^([a-zA-Z+\\-0-9.]+)(\\s[a-zA-Z+\\-0-9.]+){0,7}$") && name.length() <= 50;
-    }
-
-    public void setID(int id) {
+    public void setID(final int id) {
         this.ID = id;
     }
 

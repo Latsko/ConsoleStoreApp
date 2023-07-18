@@ -1,4 +1,4 @@
-package org.example.Entities;
+package org.store.entities;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,22 +15,35 @@ public class Order {
     private double numberSum;
     private OrderStatus status;
 
-    public Order(String orderNumber, String clientName, String clientSurName, String clientAddress) {
-        if (!clientName.matches("^[A-Za-z]+$") || !clientSurName.matches("^[A-Za-z]+$")) {
-            throw new IllegalArgumentException("Client name and surname must consist only of letters");
-        }
-        if (!clientAddress.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$")) {
-            throw new IllegalArgumentException("Client address must consist with no more than 6 words");
-        }
-        if (!orderNumber.matches("^[0-9]{8}$")) {
-            throw new IllegalArgumentException("Order number must be 8-digit number");
-        }
+    public Order(final String orderNumber, final String clientName, final String clientSurName, final String clientAddress) {
+        checkClientFullName(clientName, clientSurName);
+        checkClientAddress(clientAddress);
+        checkOrderNumber(orderNumber);
+
         this.orderNumber = orderNumber;
         this.clientName = clientName;
         this.clientSurName = clientSurName;
         this.clientAddress = clientAddress;
         this.ID = lastID++;
         this.status = OrderStatus.CREATED;
+    }
+
+    private void checkClientFullName(final String name, final String surName) {
+        if(!name.matches("^[A-Za-z]+$") || !surName.matches("^[A-Za-z]+$")) {
+            throw new IllegalArgumentException("Client name and surname must consist only of letters");
+        }
+    }
+
+    private void checkClientAddress(final String address) {
+        if (!address.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$")) {
+            throw new IllegalArgumentException("Client address must consist with no more than 6 words");
+        }
+    }
+
+    private void checkOrderNumber(final String number) {
+        if (!number.matches("^[0-9]{8}$")) {
+            throw new IllegalArgumentException("Order number must be 8-digit number");
+        }
     }
 
     @Override

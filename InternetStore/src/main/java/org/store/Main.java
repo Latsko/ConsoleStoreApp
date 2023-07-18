@@ -1,7 +1,7 @@
-package org.example;
+package org.store;
 
-import org.example.Entities.fileHandling.CreateData;
-import org.example.Services.CategoryService;
+import org.store.services.fileHandling.CreateData;
+import org.store.services.CategoryService;
 
 import java.io.FileNotFoundException;
 
@@ -9,11 +9,12 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         CreateData createData = new CreateData();
         createData.createProducts();
-        createData.createCategories();
+        //createData.createCategories(null);
 
         CategoryService categoryService = new CategoryService();
+        categoryService.addCategory();
         categoryService.showAllCategories();
-        categoryService.showCategory("TV");
-        categoryService.showCategory("Sport");
+        categoryService.removeCategory();
+        categoryService.showAllCategories();
     }
 }
