@@ -1,5 +1,7 @@
 package org.store.services;
 
+
+import org.store.entities.Category;
 import org.store.entities.Product;
 import org.store.services.fileHandling.CreateData;
 import org.store.services.fileHandling.ReadData;
@@ -8,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ProductService {
     private final List<Product> products;
@@ -45,5 +48,56 @@ public class ProductService {
         products.stream()
                 .map(Product::getName)
                 .forEach(name -> System.out.println("\t" + name));
+    }
+
+    public void addProduct() throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        String newProductName;
+        List<String> productsNames = products.stream()
+                .map(Product::getName)
+                .toList();
+        do {
+            System.out.print("Podaj nazwę dodawanego produktu: ");
+            newProductName = scanner.nextLine();
+            if (!Product.nameIsCorrect(newProductName)) {
+                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
+            } else if (productsNames.contains(newProductName)) {
+                System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
+            } else {
+                break;
+            }
+
+        } while (true);
+
+        double price;
+        do {
+            System.out.println("Podaj cenę: ");
+            price = scanner.nextInt();
+        } while (!(price > 0));
+
+        Category category;
+        String name;
+        List<Category> categoryList = new ArrayList<>(readData.readCategoriesFromFile());
+        List<String> categoryNameList = categoryList.stream()
+                .map(current -> current.getName())
+                .toList();
+        do{
+            System.out.print("Podaj nazwę kategorii: ");
+            name = scanner.nextLine();
+            if (!Category.nameIsCorrect(name)) {
+                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
+            } else if (productsNames.contains(name)) {
+                System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
+            } else {
+                break;
+            }
+
+        } while (true);
+
+
+//        CreateData update = new CreateData();
+////        update.createProducts(products);
+//         gdzie na szaro tam mam bledy
+
     }
 }

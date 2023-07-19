@@ -11,12 +11,9 @@ public class Product {
     private final int quantity;
 
     public Product(final double price, final String name, final Category category, final int quantity) {
-        if (price < 0) {
-            throw new IllegalArgumentException("Price lesser then zero cannot be assigned");
-        }
-        if (quantity < 0) {
-            throw new IllegalArgumentException("Quantity lesser then zero cannot be assigned");
-        }
+        checkPrice(price);
+        checkQuantity(quantity);
+
         if (category == null) {
             throw new IllegalArgumentException("Category must not be null");
         }
@@ -30,6 +27,24 @@ public class Product {
         this.ID = lastID++;
     }
 
+    private void checkPrice(final double price){
+        if (price < 0) {
+            throw new IllegalArgumentException("Price lesser then zero cannot be assigned");
+        }
+    }
+
+    private void checkQuantity(final int quantity){
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Quantity lesser then zero cannot be assigned");
+        }
+    }
+
+
+
+
+    public static boolean nameIsCorrect(final String name) {
+        return name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$");
+    }
     public void setID(final int id) {
         this.ID = id;
     }
