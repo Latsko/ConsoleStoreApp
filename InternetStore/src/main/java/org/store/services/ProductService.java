@@ -87,7 +87,7 @@ public class ProductService {
         do {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
-            if (!Category.nameIsCorrect(inputCategoryName)) {
+            if (!Category.isNameCorrect(inputCategoryName)) {
                 System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
             } else if (productsNames.contains(inputCategoryName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
