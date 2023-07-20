@@ -1,6 +1,5 @@
 package org.store.services;
 
-
 import org.store.entities.Category;
 import org.store.entities.Product;
 import org.store.services.fileHandling.CreateData;
@@ -13,13 +12,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ProductService {
-    private final List<Product> products;
-
     private final ReadData readData = new ReadData();
+    private final List<Product> products;
 
     public ProductService() throws FileNotFoundException {
         File productFile = CreateData.getProductsPath().toFile();
-        if(productFile.exists()) {
+        if (productFile.exists()) {
             products = new ArrayList<>(readData.readProductsFromFile());
         } else {
             products = new ArrayList<>();
@@ -28,17 +26,15 @@ public class ProductService {
     }
 
     public void showProduct(String name) throws FileNotFoundException {
-        List<Product> productList = new ArrayList<>(readData.readProductsFromFile());
         Product foundProduct = products.stream().filter(product -> product.getName()
                         .equals(name))
                 .findAny()
                 .orElse(null);
 
-        if(foundProduct != null) {
-            System.out.println("{" + foundProduct.getID() + "}" + foundProduct.getName());
-            productList.stream()
-                    .filter(product -> product.getName().equals(name))
-                    .forEach(System.out::println);
+        if (foundProduct != null) {
+            System.out.println("[" + foundProduct.getID() + "] " + foundProduct.getName() +
+                    "\n\tPrice: " + foundProduct.getPrice() + "\t\nCategory: " + foundProduct.getCategory().getName()
+                    + "\n\tQuantity: " + foundProduct.getQuantity());
         } else {
             System.out.println("Niepoprawny produkt");
         }
@@ -46,7 +42,7 @@ public class ProductService {
 
     public void showAllProducts() {
         products.stream()
-                .map(Product::getName)
+                .map(product -> "[" + product.getID() + "] " + product.getName())
                 .forEach(name -> System.out.println("\t" + name));
     }
 
@@ -81,7 +77,7 @@ public class ProductService {
         List<String> categoryNameList = categoryList.stream()
                 .map(current -> current.getName())
                 .toList();
-        do{
+        do {
             System.out.print("Podaj nazwę kategorii: ");
             name = scanner.nextLine();
             if (!Category.nameIsCorrect(name)) {
