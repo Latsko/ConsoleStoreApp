@@ -24,8 +24,7 @@ public class ReadData {
             Category category = new Category(read.getJSONObject(i).getString("category"));
             int quantity = read.getJSONObject(i).getInt("quantity");
 
-            Product currentProduct = new Product(price, name, category, quantity);
-            currentProduct.setID(id);
+            Product currentProduct = new Product(price, name, category, quantity, id);
             productList.add(currentProduct);
         }
 

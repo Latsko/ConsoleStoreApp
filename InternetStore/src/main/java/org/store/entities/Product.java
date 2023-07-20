@@ -3,7 +3,7 @@ package org.store.entities;
 import java.util.Objects;
 
 public class Product {
-    private static int lastID = 0;
+    public static int lastID = 0;
     private int ID;
     private final double price;
     private final String name;
@@ -25,6 +25,23 @@ public class Product {
         this.name = name;
         this.category = category;
         this.ID = lastID++;
+    }
+
+    public Product(final double price, final String name, final Category category, final int quantity, final int id) {
+        checkPrice(price);
+        checkQuantity(quantity);
+
+        if (category == null) {
+            throw new IllegalArgumentException("Category must not be null");
+        }
+        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
+            throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
+        }
+        this.price = price;
+        this.quantity = quantity;
+        this.name = name;
+        this.category = category;
+        this.ID = id;
     }
 
     private void checkPrice(final double price){

@@ -392,10 +392,10 @@
         "category": "Zabawki"
     },
     {
-        "quantity": 2,
-        "price": 12,
+        "quantity": 55,
+        "price": 23,
         "name": "asdf",
-        "id": 112,
+        "id": 56,
         "category": "TV"
     }
 ]

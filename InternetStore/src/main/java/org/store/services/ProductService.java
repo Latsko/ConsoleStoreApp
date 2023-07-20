@@ -46,6 +46,7 @@ public class ProductService {
     }
 
     public void addProduct() throws FileNotFoundException {
+        System.out.println(Product.lastID);
         Scanner scanner = new Scanner(System.in);
         String inputProductName;
         List<String> productsNames = products.stream()
@@ -114,6 +115,5 @@ public class ProductService {
         products.add(new Product(inputPrice, inputProductName, inputCategory, inputQuantity));
         CreateData update = new CreateData();
         update.createProducts(products);
-
     }
 }
