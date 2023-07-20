@@ -11,7 +11,7 @@ public class Order {
     private final String clientName;
     private final String clientSurName;
     private final String clientAddress;
-    private final Map<Product, Integer> basket = new HashMap<>();
+    private final Map<Integer, Product> basket;
     private double numberSum;
     private OrderStatus status;
 
@@ -26,6 +26,20 @@ public class Order {
         this.clientAddress = clientAddress;
         this.ID = lastID++;
         this.status = OrderStatus.CREATED;
+        this.basket = new HashMap<>();
+        numberSum = 0;
+    }
+
+    public static boolean isClientAddressCorrect(final String address) {
+        return address.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$");
+    }
+
+    public static boolean isClientNameCorrect(final String name) {
+        return name.matches("^[A-Za-z]+$");
+    }
+
+    public static boolean isClientSurNameCorrect(final String surName) {
+        return isClientNameCorrect(surName);
     }
 
     private void checkClientFullName(final String name, final String surName) {
@@ -44,6 +58,46 @@ public class Order {
         if (!number.matches("^[0-9]{8}$")) {
             throw new IllegalArgumentException("Order number must be 8-digit number");
         }
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public String getClientSurName() {
+        return clientSurName;
+    }
+
+    public String getClientAddress() {
+        return clientAddress;
+    }
+
+    public void addToSum(double price, int quantity) {
+        this.numberSum = this.numberSum + price * quantity;
+    }
+
+    public Map<Integer, Product> getBasket() {
+        return basket;
+    }
+
+    public double getNumberSum() {
+        return numberSum;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
     @Override
