@@ -19,7 +19,7 @@ public class OrderService {
     public void addProductToOrder(final int productID, final int orderID, final int quantity) {
         ProductService productService = new ProductService();
         // tu ma być lista produktów, zapisana do zmiennej przy pomocy metody statycznej ProductService, czyli
-        // List<Product> productList = ProductService.getProductList();
+        //List<Product> productList = ProductService.getProductList();
         // czy coś w tym stylu
 
         //sprawdzenie, czy quantity produktu nie jest mniejsze od tego, które podaliśmy
