@@ -19,8 +19,9 @@ public class CreateData {
     public static Path getProductsPath() {
         return productsPath;
     }
+
     public static Path getCategoriesPath() {
-        return  categoriesPath;
+        return categoriesPath;
     }
 
     private final Category[] categories = {
@@ -114,34 +115,43 @@ public class CreateData {
             new Product(85, "Wyrzutnia HASBRO", categories[7], 16)
     };
 
-    public void createProducts() throws FileNotFoundException {
-
+    public void createProducts(List<Product> products) throws FileNotFoundException {
         List<JSONObject> jsonObjects = new ArrayList<>();
-        Product[][] allProducts = {tv, agd, computers, smartphones, sports, gaming, cameras, toys};
-
-        for (Product[] allProduct : allProducts) {
-            for (int j = 0; j < allProducts[j].length; j++) {
+        if (products != null) {
+            for (Product product : products) {
                 jsonObjects.add(new JSONObject()
-                        .put("id", allProduct[j].getID())
-                        .put("price", allProduct[j].getPrice())
-                        .put("name", allProduct[j].getName())
-                        .put("category", allProduct[j].getCategory().getName())
-                        .put("quantity", allProduct[j].getQuantity())
-                );
+                        .put("id", product.getID())
+                        .put("price", product.getPrice())
+                        .put("name", product.getName())
+                        .put("category", product.getCategory().getName())
+                        .put("quantity", product.getQuantity()));
+            }
+        } else {
+            Product[][] allProducts = {tv, agd, computers, smartphones, sports, gaming, cameras, toys};
+            for (Product[] category : allProducts) {
+                for (int j = 0; j < allProducts[j].length; j++) {
+                    jsonObjects.add(new JSONObject()
+                            .put("id", category[j].getID())
+                            .put("price", category[j].getPrice())
+                            .put("name", category[j].getName())
+                            .put("category", category[j].getCategory().getName())
+                            .put("quantity", category[j].getQuantity())
+                    );
+                }
             }
         }
 
         JSONArray jsonArray = new JSONArray(jsonObjects);
 
-        try(PrintWriter printer = new PrintWriter(productsPath.toFile())) {
-           printer.print(jsonArray.toString(4));
+        try (PrintWriter printer = new PrintWriter(productsPath.toFile())) {
+            printer.print(jsonArray.toString(4));
         }
     }
 
     public void createCategories(final List<Category> updatedCategories) throws FileNotFoundException {
         List<JSONObject> jsonObjects = new ArrayList<>();
 
-        if(updatedCategories == null) {
+        if (updatedCategories == null) {
             for (Category category : categories) {
                 jsonObjects.add(new JSONObject()
                         .put("id", category.getID())
@@ -155,7 +165,7 @@ public class CreateData {
             }
         }
         JSONArray jsonArray = new JSONArray(jsonObjects);
-        try(PrintWriter printer = new PrintWriter(categoriesPath.toFile())) {
+        try (PrintWriter printer = new PrintWriter(categoriesPath.toFile())) {
             printer.print(jsonArray.toString(4));
         }
     }

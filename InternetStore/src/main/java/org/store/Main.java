@@ -9,12 +9,13 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         CreateData createData = new CreateData();
-        createData.createProducts();
+        //createData.createProducts(null);
 
         ProductService productService = new ProductService();
-        //productService.addProduct();
         productService.showAllProducts();
-        productService.showProduct("LG 32A5KQ");
+        productService.addProduct();
+        productService.showAllProducts();
+
 
     }
 }

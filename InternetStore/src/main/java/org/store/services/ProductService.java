@@ -33,7 +33,7 @@ public class ProductService {
 
         if (foundProduct != null) {
             System.out.println("[" + foundProduct.getID() + "] " + foundProduct.getName() +
-                    "\n\tPrice: " + foundProduct.getPrice() + "\t\nCategory: " + foundProduct.getCategory().getName()
+                    "\n\tPrice: " + foundProduct.getPrice() + "\n\tCategory: " + foundProduct.getCategory().getName()
                     + "\n\tQuantity: " + foundProduct.getQuantity());
         } else {
             System.out.println("Niepoprawny produkt");
@@ -67,33 +67,54 @@ public class ProductService {
 
         double price;
         do {
-            System.out.println("Podaj cenę: ");
-            price = scanner.nextInt();
-        } while (!(price > 0));
+            System.out.print("Podaj cenę: ");
+            price = scanner.nextDouble();
+            if(price <= 0) {
+                System.out.println("Cena nie może być mniejsza lub równa zero!");
+            } else {
+                scanner.nextLine();
+                break;
+            }
+        } while (true);
 
         Category category;
-        String name;
+        String inputName;
+        // need this lists for further category names validation
         List<Category> categoryList = new ArrayList<>(readData.readCategoriesFromFile());
         List<String> categoryNameList = categoryList.stream()
-                .map(current -> current.getName())
+                .map(Category::getName)
                 .toList();
         do {
             System.out.print("Podaj nazwę kategorii: ");
-            name = scanner.nextLine();
-            if (!Category.nameIsCorrect(name)) {
+            inputName = scanner.nextLine();
+            if (!Category.nameIsCorrect(inputName)) {
                 System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
-            } else if (productsNames.contains(name)) {
+            } else if (productsNames.contains(inputName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
+            } else if (!categoryNameList.contains(inputName)) {
+                System.out.println("\tNie ma takiej kategorii!\nLista aktualnych kategorii:");
+                categoryNameList.forEach(System.out::println);
             } else {
+                category = new Category(inputName);
                 break;
             }
-
         } while (true);
 
+        int quantity;
+        do {
+            System.out.print("Podaj ilość w magazynie: ");
+            quantity = scanner.nextInt();
+            if(quantity <= 0) {
+                System.out.println("Ilość nie może być mniejsza lub równa zero!");
+            } else {
+                scanner.nextLine();
+                break;
+            }
+        } while (true);
 
-//        CreateData update = new CreateData();
-////        update.createProducts(products);
-//         gdzie na szaro tam mam bledy
+        products.add(new Product(price, newProductName, category, quantity));
+        CreateData update = new CreateData();
+        update.createProducts(products);
 
     }
 }

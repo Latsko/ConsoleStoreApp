@@ -390,5 +390,12 @@
         "name": "Wyrzutnia HASBRO",
         "id": 55,
         "category": "Zabawki"
+    },
+    {
+        "quantity": 2,
+        "price": 12,
+        "name": "asdf",
+        "id": 112,
+        "category": "TV"
     }
 ]
