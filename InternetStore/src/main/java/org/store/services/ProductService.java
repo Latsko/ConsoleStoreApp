@@ -15,6 +15,10 @@ public class ProductService {
     private final ReadData readData = new ReadData();
     private final List<Product> products;
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public ProductService() throws FileNotFoundException {
         File productFile = CreateData.getProductsPath().toFile();
         if (productFile.exists()) {
@@ -23,6 +27,16 @@ public class ProductService {
             products = new ArrayList<>();
         }
     }
+
+    public Product getProductByID(int id) {
+        for (Product product : products) {
+            if (product.getID() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
 
     public void showProduct(String name) throws FileNotFoundException {
         Product foundProduct = products.stream()
@@ -46,7 +60,6 @@ public class ProductService {
     }
 
     public void addProduct() throws FileNotFoundException {
-        System.out.println(Product.lastID);
         Scanner scanner = new Scanner(System.in);
         String inputProductName;
         List<String> productsNames = products.stream()
@@ -87,7 +100,7 @@ public class ProductService {
         do {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
-            if (!Category.isNameCorrect(inputCategoryName)) {
+            if (!Category.isNameCorrect((inputCategoryName))) {
                 System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
             } else if (productsNames.contains(inputCategoryName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");

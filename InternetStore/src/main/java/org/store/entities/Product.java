@@ -13,13 +13,8 @@ public class Product {
     public Product(final double price, final String name, final Category category, final int quantity) {
         checkPrice(price);
         checkQuantity(quantity);
-
-        if (category == null) {
-            throw new IllegalArgumentException("Category must not be null");
-        }
-        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
-            throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
-        }
+        checkCategory(category);
+        checkName(name);
         this.price = price;
         this.quantity = quantity;
         this.name = name;
@@ -30,18 +25,25 @@ public class Product {
     public Product(final double price, final String name, final Category category, final int quantity, final int id) {
         checkPrice(price);
         checkQuantity(quantity);
-
-        if (category == null) {
-            throw new IllegalArgumentException("Category must not be null");
-        }
-        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
-            throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
-        }
+        checkCategory(category);
+        checkName(name);
         this.price = price;
         this.quantity = quantity;
         this.name = name;
         this.category = category;
         this.ID = id;
+    }
+
+    private void checkName(final String name) {
+        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
+            throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
+        }
+    }
+
+    private void checkCategory(final Category category) {
+        if (category == null) {
+            throw new IllegalArgumentException("Category must not be null");
+        }
     }
 
     private void checkPrice(final double price){
@@ -55,9 +57,6 @@ public class Product {
             throw new IllegalArgumentException("Quantity lesser then zero cannot be assigned");
         }
     }
-
-
-
 
     public static boolean nameIsCorrect(final String name) {
         return name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$");
