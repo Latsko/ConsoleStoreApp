@@ -19,7 +19,7 @@ public class Category {
         }
     }
 
-    public static boolean nameIsCorrect(final String name) {
+    public static boolean isNameCorrect(final String name) {
         return name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$");
     }
 

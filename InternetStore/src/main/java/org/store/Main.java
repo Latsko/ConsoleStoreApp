@@ -1,5 +1,8 @@
 package org.store;
 
+import org.store.entities.Order;
+import org.store.entities.OrderStatus;
+import org.store.services.OrderService;
 import org.store.services.ProductService;
 import org.store.services.fileHandling.CreateData;
 import org.store.services.CategoryService;
@@ -13,8 +16,17 @@ public class Main {
 
         ProductService productService = new ProductService();
         productService.showAllProducts();
-        productService.addProduct();
+
         productService.showAllProducts();
+
+        OrderService orderService = new OrderService();
+
+        orderService.addOrder();
+        orderService.showAllOrders();
+        orderService.showOrder();
+        orderService.changeStatus();
+        orderService.showOrder();
+
 
 
     }
