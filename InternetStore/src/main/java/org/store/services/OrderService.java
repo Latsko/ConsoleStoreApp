@@ -5,6 +5,7 @@ import org.store.entities.Order;
 import org.store.entities.OrderStatus;
 import org.store.entities.Product;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class OrderService {
@@ -16,7 +17,7 @@ public class OrderService {
     }
 
     ////////////////////////////////////////////// tu wczoraj skończyłem //////////////////////////////////////////////
-    public void addProductToOrder(final int productID, final int orderID, final int quantity) {
+    public void addProductToOrder(final int productID, final int orderID, final int quantity) throws FileNotFoundException {
         ProductService productService = new ProductService();
         // tu ma być lista produktów, zapisana do zmiennej przy pomocy metody statycznej ProductService, czyli
         //List<Product> productList = ProductService.getProductList();
