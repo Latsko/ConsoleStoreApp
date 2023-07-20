@@ -37,6 +37,27 @@ public class ProductService {
         return null;
     }
 
+    public void removeProduct() throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        int inputID;
+        showAllProducts();
+
+        do {
+            System.out.print("Podaj ID usuwanego produktu: ");
+            inputID = scanner.nextInt();
+
+            Product searched = getProductByID(inputID);
+            if (searched != null) {
+                products.remove(searched);
+                break;
+            } else {
+                System.out.println("Nie ma produktu pod takim id, spróbuj ponownie.");
+            }
+        } while (true);
+
+        CreateData update = new CreateData();
+        update.createProducts(products);
+    }
 
     public void showProduct(String name) throws FileNotFoundException {
         Product foundProduct = products.stream()

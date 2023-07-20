@@ -14,16 +14,18 @@ public class Main {
         CreateData createData = new CreateData();
         //createData.createProducts(null);
 
-//        ProductService productService = new ProductService();
-//        productService.showAllProducts();
-//        productService.addProduct();
-//        productService.showAllProducts();
+        ProductService productService = new ProductService();
+        productService.showAllProducts();
+        productService.addProduct();
+        productService.showAllProducts();
+        productService.removeProduct();
+        productService.showAllProducts();
 
-        OrderService orderService = new OrderService();
-        orderService.addOrder();
-        orderService.showAllOrders();
-        orderService.showOrder();
-        orderService.removeOrder();
-        orderService.showAllOrders();
+//        OrderService orderService = new OrderService();
+//        orderService.addOrder();
+//        orderService.showAllOrders();
+//        orderService.showOrder();
+//        orderService.removeOrder();
+//        orderService.showAllOrders();
     }
 }
