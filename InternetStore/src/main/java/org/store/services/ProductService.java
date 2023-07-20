@@ -59,7 +59,7 @@ public class ProductService {
         update.createProducts(products);
     }
 
-    public void showProduct(String name) throws FileNotFoundException {
+    public void showProduct(String name) {
         Product foundProduct = products.stream()
                 .filter(product -> product.getName().equals(name))
                 .findAny()

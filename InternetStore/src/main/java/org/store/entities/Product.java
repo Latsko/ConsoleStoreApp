@@ -61,9 +61,6 @@ public class Product {
     public static boolean nameIsCorrect(final String name) {
         return name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$");
     }
-    public void setID(final int id) {
-        this.ID = id;
-    }
 
     public int getID() {
         return ID;
