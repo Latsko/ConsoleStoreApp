@@ -16,13 +16,10 @@ public class CategoryService {
     private final ReadData readData = new ReadData();
     public CategoryService() throws FileNotFoundException {
         File categoryFile = CreateData.getCategoriesPath().toFile();
-        if(categoryFile.exists()) {
-            categories = new ArrayList<>(readData.readCategoriesFromFile());
-        } else {
-            //tutaj może być wygenerowanie właśnie pliku z danymi, czyli
-            new CreateData().createCategories(null);
-            categories = new ArrayList<>();
+        if(!categoryFile.exists()) {
+            new CreateData().createCategories();
         }
+        categories = new ArrayList<>(readData.readCategoriesFromFile());
     }
 
     public void showCategory(final String name) throws FileNotFoundException {
@@ -68,7 +65,7 @@ public class CategoryService {
         } while (true);
 
         CreateData update = new CreateData();
-        update.createCategories(categories);
+        update.writeCategories(categories);
     }
 
     public void removeCategory() throws FileNotFoundException {
@@ -91,7 +88,7 @@ public class CategoryService {
         } while (true);
 
         CreateData update = new CreateData();
-        update.createCategories(categories);
+        update.writeCategories(categories);
     }
 
     private int findByName(final String name) {

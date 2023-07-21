@@ -2,7 +2,6 @@ package org.store.services;
 
 import org.store.services.fileHandling.CreateData;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -83,7 +82,7 @@ public class Menu {
             }
         }
         CreateData update = new CreateData();
-        update.createProducts(productService.getProducts());
+        update.writeProducts(productService.getProducts());
         System.out.println("**************************************");
     }
 }

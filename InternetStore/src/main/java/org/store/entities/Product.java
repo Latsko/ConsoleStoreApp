@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Product {
     public static int lastID = 0;
-    private int ID;
+    final private int ID;
     private final double price;
     private final String name;
     private final Category category;
@@ -20,7 +20,6 @@ public class Product {
         this.name = name;
         this.category = category;
         this.ID = lastID++;
-        System.out.println(lastID);
     }
 
     public Product(final double price, final String name, final Category category, final int quantity, final int id) {

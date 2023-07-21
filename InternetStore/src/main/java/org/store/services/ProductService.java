@@ -21,11 +21,10 @@ public class ProductService {
 
     public ProductService() throws FileNotFoundException {
         File productFile = CreateData.getProductsPath().toFile();
-        if (productFile.exists()) {
-            products = readData.readProductsFromFile();
-        } else {
-            products = new ArrayList<>();
+        if (!productFile.exists()) {
+            new CreateData().createProducts();
         }
+        products = readData.readProductsFromFile();
     }
 
     public Product getProductByID(int id) {
@@ -37,7 +36,7 @@ public class ProductService {
         return null;
     }
 
-    public void removeProduct() throws FileNotFoundException {
+    public void removeProduct() {
         System.out.println("-------- Usunięcie produktu z listy --------");
         Scanner scanner = new Scanner(System.in);
         int inputID;
@@ -60,6 +59,8 @@ public class ProductService {
                 System.out.println("Nie ma produktu pod takim id, spróbuj podać inny.");
             }
         } while (true);
+
+        System.out.println("--------- Produkt został usunięty ----------");
         System.out.println("--------------------------------------------");
     }
 
