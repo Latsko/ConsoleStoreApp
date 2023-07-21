@@ -22,7 +22,7 @@ public class ProductService {
     public ProductService() throws FileNotFoundException {
         File productFile = CreateData.getProductsPath().toFile();
         if (productFile.exists()) {
-            products = new ArrayList<>(readData.readProductsFromFile());
+            products = readData.readProductsFromFile();
         } else {
             products = new ArrayList<>();
         }
@@ -38,28 +38,36 @@ public class ProductService {
     }
 
     public void removeProduct() throws FileNotFoundException {
+        System.out.println("-------- Usunięcie produktu z listy --------");
         Scanner scanner = new Scanner(System.in);
         int inputID;
         showAllProducts();
 
         do {
-            System.out.print("Podaj ID usuwanego produktu: ");
+            System.out.print("Podaj ID usuwanego produktu( -1 - żeby cofnąć): ");
             inputID = scanner.nextInt();
 
             Product searched = getProductByID(inputID);
+            if(inputID == -1) {
+                break;
+            }
             if (searched != null) {
                 products.remove(searched);
+//                CreateData update = new CreateData();
+//                update.createProducts(products);
                 break;
             } else {
-                System.out.println("Nie ma produktu pod takim id, spróbuj ponownie.");
+                System.out.println("Nie ma produktu pod takim id, spróbuj podać inny.");
             }
         } while (true);
-
-        CreateData update = new CreateData();
-        update.createProducts(products);
+        System.out.println("--------------------------------------------");
     }
 
-    public void showProduct(String name) {
+    public void showProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj nazwę produktu: ");
+        String name = scanner.nextLine();
+
         Product foundProduct = products.stream()
                 .filter(product -> product.getName().equals(name))
                 .findAny()
@@ -86,6 +94,7 @@ public class ProductService {
         List<String> productsNames = products.stream()
                 .map(Product::getName)
                 .toList();
+        System.out.println(" +++++++++++++ Dodanie produktu +++++++++++++");
         do {
             System.out.print("Podaj nazwę dodawanego produktu: ");
             inputProductName = scanner.nextLine();
@@ -122,7 +131,7 @@ public class ProductService {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
             if (!Category.isNameCorrect((inputCategoryName))) {
-                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
+                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów bez znaków specjalnych.");
             } else if (productsNames.contains(inputCategoryName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
             } else if (!categoryNameList.contains(inputCategoryName)) {
@@ -147,7 +156,10 @@ public class ProductService {
         } while (true);
 
         products.add(new Product(inputPrice, inputProductName, inputCategory, inputQuantity));
-        CreateData update = new CreateData();
-        update.createProducts(products);
+//        CreateData update = new CreateData();
+//        update.createProducts(products);
+
+        System.out.println("\tNowy produkt był dodany do listy");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
     }
 }

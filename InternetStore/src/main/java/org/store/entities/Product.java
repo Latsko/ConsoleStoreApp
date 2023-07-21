@@ -20,6 +20,7 @@ public class Product {
         this.name = name;
         this.category = category;
         this.ID = lastID++;
+        System.out.println(lastID);
     }
 
     public Product(final double price, final String name, final Category category, final int quantity, final int id) {
@@ -32,7 +33,9 @@ public class Product {
         this.name = name;
         this.category = category;
         this.ID = id;
+        lastID++;
     }
+
 
     private void checkName(final String name) {
         if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
