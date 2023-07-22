@@ -92,6 +92,8 @@ public class Menu {
                 default:
                     System.out.println("\tNiepoprawny numer opcji!");
             }
+            CreateData update = new CreateData();
+            update.writeOrders(orderService.getOrderList());
             System.out.println("****************************************");
         }
     }

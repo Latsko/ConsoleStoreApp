@@ -263,4 +263,8 @@ public class OrderService {
         }
         return number.toString();
     }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
 }

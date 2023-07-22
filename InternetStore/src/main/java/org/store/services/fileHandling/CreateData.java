@@ -1,6 +1,7 @@
 package org.store.services.fileHandling;
 
 import org.store.entities.Category;
+import org.store.entities.Order;
 import org.store.entities.Product;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import java.util.List;
 public class CreateData {
     private static final Path productsPath = Paths.get("data", "products.json");
     private static final Path categoriesPath = Paths.get("data", "categories.json");
+    private static final Path ordersPath = Paths.get("data", "orders.json");
 
     public static Path getProductsPath() {
         return productsPath;
@@ -22,6 +24,9 @@ public class CreateData {
 
     public static Path getCategoriesPath() {
         return categoriesPath;
+    }
+    public static Path getOrdersPath() {
+        return ordersPath;
     }
 
     public Category[] getCategories() {
@@ -187,6 +192,29 @@ public class CreateData {
         }
         JSONArray jsonArray = new JSONArray(jsonObjects);
         try (PrintWriter printer = new PrintWriter(categoriesPath.toFile())) {
+            printer.print(jsonArray.toString(4));
+        }
+    }
+
+    public void writeOrders(List<Order> newOrders) throws FileNotFoundException {
+        List<JSONObject> jsonObjects = new ArrayList<>();
+        if (newOrders != null) {
+            for (Order order : newOrders) {
+                jsonObjects.add(new JSONObject()
+                        //.put("id", order.getID())
+                        .put("orderNumber", order.getOrderNumber())
+                        .put("basket", order.getBasket())
+                        .put("clientName", order.getClientName())
+                        .put("clientSurname",order.getClientSurName())
+                        .put("address", order.getClientAddress())
+                        .put("orderSum", order.getNumberSum())
+                        .put("status", order.getStatus()));
+            }
+        }
+
+        JSONArray jsonArray = new JSONArray(jsonObjects);
+
+        try (PrintWriter printer = new PrintWriter(ordersPath.toFile())) {
             printer.print(jsonArray.toString(4));
         }
     }

@@ -1,6 +1,8 @@
 package org.store.services.fileHandling;
 
 import org.store.entities.Category;
+import org.store.entities.Order;
+import org.store.entities.OrderStatus;
 import org.store.entities.Product;
 import org.json.JSONArray;
 import org.json.JSONTokener;
@@ -10,8 +12,26 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ReadData {
+    public List<Order> readOrdersFromFile() throws FileNotFoundException {
+        File file = CreateData.getOrdersPath().toFile();
+        List<Order> orderList = new ArrayList<>();
+        JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
+        for (int i = 0; i < orderList.size(); i++) {
+            int id = read.getJSONObject(i).getInt("id");
+            String orderNum = read.getJSONObject(i).getString("orderNumber");
+            String clientName = read.getJSONObject(i).getString("clientName");
+            String clientSurname = read.getJSONObject(i).getString("clientSurname");
+            String clientAddress = read.getJSONObject(i).getString("address");
+            double orderSum = read.getJSONObject(i).getDouble("orderSum");
+            OrderStatus orderStatus = OrderStatus.getOrderFromString(read.getJSONObject(i).getString("status"));
+            //
+
+        }
+        return null;
+    }
     public List<Product> readProductsFromFile() throws FileNotFoundException {
         File file = CreateData.getProductsPath().toFile();
 
@@ -28,7 +48,6 @@ public class ReadData {
             productList.add(currentProduct);
         }
 
-//        Category.setLastIDToZero();
         return productList;
     }
 
