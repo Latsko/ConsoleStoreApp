@@ -47,8 +47,8 @@ public class ProductService {
             inputID = scanner.nextInt();
 
             Product searched = getProductByID(inputID);
-            if(inputID == -1) {
-                break;
+            if (inputID == -1) {
+                return;
             }
             if (searched != null) {
                 products.remove(searched);
@@ -111,7 +111,7 @@ public class ProductService {
         do {
             System.out.print("Podaj cenę: ");
             inputPrice = scanner.nextDouble();
-            if(inputPrice <= 0) {
+            if (inputPrice <= 0) {
                 System.out.println("Cena nie może być mniejsza lub równa zero!");
             } else {
                 scanner.nextLine();
@@ -146,7 +146,7 @@ public class ProductService {
         do {
             System.out.print("Podaj ilość w magazynie: ");
             inputQuantity = scanner.nextInt();
-            if(inputQuantity <= 0) {
+            if (inputQuantity <= 0) {
                 System.out.println("Ilość nie może być mniejsza lub równa zero!");
             } else {
                 scanner.nextLine();

@@ -14,9 +14,10 @@ import java.util.Scanner;
 public class CategoryService {
     private final List<Category> categories;
     private final ReadData readData = new ReadData();
+
     public CategoryService() throws FileNotFoundException {
         File categoryFile = CreateData.getCategoriesPath().toFile();
-        if(!categoryFile.exists()) {
+        if (!categoryFile.exists()) {
             new CreateData().createCategories();
         }
         categories = new ArrayList<>(readData.readCategoriesFromFile());
@@ -31,13 +32,13 @@ public class CategoryService {
         // here I must update lastID from RAM, because every time I call
         // readProductsFromFile(), I invoke Category constructor, which
         // increments lastID pole
-        Category.setLastID(categories.get(categories.size()-1).getID() + 1);
+        Category.setLastID(categories.get(categories.size() - 1).getID() + 1);
         Category foundCategory = categories.stream()
                 .filter(category -> category.getName().equals(name))
                 .findAny()
                 .orElse(null);
 
-        if(foundCategory != null) {
+        if (foundCategory != null) {
             System.out.println("-------------- ID [" + foundCategory.getID() + "] " + foundCategory.getName() + "--------------");
             productList.stream()
                     .filter(product -> product.getCategory().getName().equals(name))
@@ -91,7 +92,7 @@ public class CategoryService {
         do {
             System.out.print("Podaj nazwę kategorii do usunięcia( -1 żeby cofnąć): ");
             categoryToRemove = scanner.nextLine();
-            if(categoryToRemove.equals("-1")) {
+            if (categoryToRemove.equals("-1")) {
                 break;
             }
             if (Category.isNameCorrect(categoryToRemove)) {
@@ -112,7 +113,7 @@ public class CategoryService {
 
     private int findByName(final String name) {
         for (int i = 0; i < categories.size(); i++) {
-            if(categories.get(i).getName().equals(name)) {
+            if (categories.get(i).getName().equals(name)) {
                 return i;
             }
         }

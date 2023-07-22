@@ -24,7 +24,11 @@ public class OrderService {
     }
 
     public void removeOrder() {
-        System.out.println("+++++++++++++++++++++ Usunięcie zamówienia +++++++++++++++++++++");
+        if (orderList.isEmpty()) {
+            System.out.println("\tNie ma zamówień do usunięcia!");
+            return;
+        }
+        System.out.println("--------------------- Usunięcie zamówienia ---------------------");
         Scanner scanner = new Scanner(System.in);
         showAllOrders();
         do {
@@ -43,11 +47,15 @@ public class OrderService {
             } else {
                 System.out.println("Nie udało się znaleźć zamówienie pod takim numerem. Spróbuj ponownie.");
             }
-        } while(true);
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        } while (true);
+        System.out.println("----------------------------------------------------------------");
     }
 
     public void addProductToOrder() throws FileNotFoundException {
+        if (orderList.isEmpty()) {
+            System.out.println("\tNie ma aktualnych zamówień!");
+            return;
+        }
         System.out.println("+++++++++++++++ Dodawanie produktu do zamówienia ++++++++++++++++");
         int productID, orderID, quantity;
         Scanner scanner = new Scanner(System.in);
@@ -110,6 +118,10 @@ public class OrderService {
     }
 
     public void showOrderStatus() {
+        if (orderList.isEmpty()) {
+            System.out.println("\tNie ma aktualnych zamówień!");
+            return;
+        }
         System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ Pokaż status zamówienia ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
         System.out.print("Proszę podać ID zamówienia: ");
         Scanner scanner = new Scanner(System.in);
@@ -126,9 +138,14 @@ public class OrderService {
             System.out.println("Niepoprawny ID");
         }
         System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
+
     }
 
     public void changeStatus() {
+        if (orderList.isEmpty()) {
+            System.out.println("\tNie ma aktualnych zamówień!");
+            return;
+        }
         System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ Zmień status zamówienia ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
         System.out.print("Proszę podać ID zamówienia: ");
         Scanner scanner = new Scanner(System.in);
@@ -198,7 +215,7 @@ public class OrderService {
     }
 
     public void showAllOrders() {
-        if(orderList.isEmpty()) {
+        if (orderList.isEmpty()) {
             System.out.println("Na razie nie ma żadnego zamówienia.");
         }
         orderList.stream()
@@ -207,6 +224,10 @@ public class OrderService {
     }
 
     public void showOrder() {
+        if (orderList.isEmpty()) {
+            System.out.println("\tJeszcze nie dodano żadnego zamówienia!");
+            return;
+        }
         showAllOrders();
         final String orderNum;
         Scanner scanner = new Scanner(System.in);
@@ -225,7 +246,7 @@ public class OrderService {
                         "\n\tAddress: " + searchedOrder.getClientAddress());
 
                 System.out.println("=== Aktualne produkty w koszyku === \n");
-                if(searchedOrder.getBasket().isEmpty()) {
+                if (searchedOrder.getBasket().isEmpty()) {
                     System.out.println("Kosz jest pusty");
                 } else {
                     searchedOrder.getBasket().entrySet().stream()
@@ -240,6 +261,7 @@ public class OrderService {
         } else {
             System.out.println("Na razie nie istnieje żadnego zamówienia");
         }
+
     }
 
     private String createUniqueOrderNumber() {

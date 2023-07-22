@@ -7,14 +7,12 @@ import java.util.Scanner;
 
 public class Menu {
     final private Scanner scanner = new Scanner(System.in);
-    private CreateData createData;
-    private ProductService productService;
-    private CategoryService categoryService;
-    private OrderService orderService;
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final OrderService orderService;
     private int choice = 0;
 
     public Menu() throws FileNotFoundException {
-        createData = new CreateData();
         productService = new ProductService();
         categoryService = new CategoryService();
         orderService = new OrderService();
@@ -29,20 +27,11 @@ public class Menu {
             System.out.print("Wybierz opcję: ");
             choice = scanner.nextInt();
             switch (choice) {
-                case 1:
-                    orderServiceOption();
-                    break;
-                case 2:
-                    categoryServiceOptions();
-                    break;
-                case 3:
-                    productServiceOptions();
-                    break;
-                case 4:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("\tNiepoprawny numer opcji!");
+                case 1 -> orderServiceOption();
+                case 2 -> categoryServiceOptions();
+                case 3 -> productServiceOptions();
+                case 4 -> exit = true;
+                default -> System.out.println("\tNiepoprawny numer opcji!");
             }
         }
         System.out.println("========== Koniec działania programu ===========");
@@ -65,44 +54,27 @@ public class Menu {
             System.out.print("Wybierz opcję: ");
             choice = scanner.nextInt();
             switch (choice) {
-                case 1:
-                    orderService.showAllOrders();
-                    break;
-                case 2:
-                    orderService.showOrder();
-                    break;
-                case 3:
-                    orderService.addOrder();
-                    break;
-                case 4:
-                    orderService.removeOrder();
-                    break;
-                case 5:
-                    orderService.changeStatus();
-                    break;
-                case 6:
-                    orderService.showOrderStatus();
-                    break;
-                case 7:
-                    orderService.addProductToOrder();
-                    break;
-                case 8:
-                    localExitFlag = true;
-                    break;
-                default:
-                    System.out.println("\tNiepoprawny numer opcji!");
+                case 1 -> orderService.showAllOrders();
+                case 2 -> orderService.showOrder();
+                case 3 -> orderService.addOrder();
+                case 4 -> orderService.removeOrder();
+                case 5 -> orderService.changeStatus();
+                case 6 -> orderService.showOrderStatus();
+                case 7 -> orderService.addProductToOrder();
+                case 8 -> localExitFlag = true;
+                default -> System.out.println("\tNiepoprawny numer opcji!");
             }
             CreateData update = new CreateData();
             update.writeOrders(orderService.getOrderList());
-            System.out.println("****************************************");
         }
+        System.out.println("****************************************");
     }
 
     private void categoryServiceOptions() throws FileNotFoundException {
         boolean localExitFlag = false;
         choice = 0;
         while (!localExitFlag) {
-            System.out.println("******* Operacje na produktach *******");
+            System.out.println("******* Operacje na kategoriach *******");
             System.out.println("\t1 - Pokaż wszystkie kategorie");
             System.out.println("\t2 - Pokaż informacje o podanej kategorii");
             System.out.println("\t3 - Dodaj kategorię");
@@ -112,23 +84,12 @@ public class Menu {
             System.out.print("Wybierz opcję: ");
             choice = scanner.nextInt();
             switch (choice) {
-                case 1:
-                    categoryService.showAllCategories();
-                    break;
-                case 2:
-                    categoryService.showCategory();
-                    break;
-                case 3:
-                    categoryService.addCategory();
-                    break;
-                case 4:
-                    categoryService.removeCategory();
-                    break;
-                case 5:
-                    localExitFlag = true;
-                    break;
-                default:
-                    System.out.println("\tNiepoprawny numer opcji!");
+                case 1 -> categoryService.showAllCategories();
+                case 2 -> categoryService.showCategory();
+                case 3 -> categoryService.addCategory();
+                case 4 -> categoryService.removeCategory();
+                case 5 -> localExitFlag = true;
+                default -> System.out.println("\tNiepoprawny numer opcji!");
             }
         }
         CreateData update = new CreateData();
@@ -150,23 +111,12 @@ public class Menu {
             System.out.print("Wybierz opcję: ");
             choice = scanner.nextInt();
             switch (choice) {
-                case 1:
-                    productService.showAllProducts();
-                    break;
-                case 2:
-                    productService.showProduct();
-                    break;
-                case 3:
-                    productService.addProduct();
-                    break;
-                case 4:
-                    productService.removeProduct();
-                    break;
-                case 5:
-                    localExitFlag = true;
-                    break;
-                default:
-                    System.out.println("\tNiepoprawny numer opcji!");
+                case 1 -> productService.showAllProducts();
+                case 2 -> productService.showProduct();
+                case 3 -> productService.addProduct();
+                case 4 -> productService.removeProduct();
+                case 5 -> localExitFlag = true;
+                default -> System.out.println("\tNiepoprawny numer opcji!");
             }
         }
         CreateData update = new CreateData();

@@ -390,54 +390,5 @@
         "name": "Wyrzutnia HASBRO",
         "id": 55,
         "category": "Zabawki"
-    },
-    {
-        "quantity": 3,
-        "price": 3,
-        "name": "name1",
-        "id": 56,
-        "category": "TV"
-    },
-    {
-        "quantity": 12,
-        "price": 3,
-        "name": "3",
-        "id": 57,
-        "category": "TV"
-    },
-    {
-        "quantity": 8,
-        "price": 234,
-        "name": "name3",
-        "id": 58,
-        "category": "TV"
-    },
-    {
-        "quantity": 8,
-        "price": 61,
-        "name": "name5",
-        "id": 59,
-        "category": "TV"
-    },
-    {
-        "quantity": 4,
-        "price": 88,
-        "name": "name6",
-        "id": 60,
-        "category": "TV"
-    },
-    {
-        "quantity": 18,
-        "price": 88,
-        "name": "namenew",
-        "id": 61,
-        "category": "TV"
-    },
-    {
-        "quantity": 6,
-        "price": 58,
-        "name": "product name",
-        "id": 63,
-        "category": "TV"
     }
 ]
