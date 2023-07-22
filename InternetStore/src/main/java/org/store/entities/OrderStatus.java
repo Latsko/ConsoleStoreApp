@@ -1,7 +1,5 @@
 package org.store.entities;
 
-import java.io.File;
-
 public enum OrderStatus {
     PAID,
     CANCELLED,
