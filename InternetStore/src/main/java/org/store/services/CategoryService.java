@@ -22,17 +22,26 @@ public class CategoryService {
         categories = new ArrayList<>(readData.readCategoriesFromFile());
     }
 
-    public void showCategory(final String name) throws FileNotFoundException {
-        List<Product> productList = new ArrayList<>(readData.readProductsFromFile());
+    public void showCategory() throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj nazwę kategorii: ");
+        String name = scanner.nextLine();
+
+        List<Product> productList = readData.readProductsFromFile();
+        // here I must update lastID from RAM, because every time I call
+        // readProductsFromFile(), I invoke Category constructor, which
+        // increments lastID pole
+        Category.setLastID(categories.get(categories.size()-1).getID() + 1);
         Category foundCategory = categories.stream()
                 .filter(category -> category.getName().equals(name))
                 .findAny()
                 .orElse(null);
 
         if(foundCategory != null) {
-            System.out.println("[" + foundCategory.getID() + "] " + foundCategory.getName());
+            System.out.println("-------------- ID [" + foundCategory.getID() + "] " + foundCategory.getName() + "--------------");
             productList.stream()
                     .filter(product -> product.getCategory().getName().equals(name))
+                    .map(product -> "[" + product.getID() + "] " + product.getName())
                     .forEach(System.out::println);
         } else {
             System.out.println("Niepoprawna kategoria");
@@ -41,11 +50,13 @@ public class CategoryService {
 
     public void showAllCategories() {
         categories.stream()
-                .map(Category::getName)
+                .map(category -> "[" + category.getID() + "] " + category.getName())
                 .forEach(name -> System.out.println("\t" + name));
     }
 
     public void addCategory() throws FileNotFoundException {
+        //Category.setLastID(categories.get(categories.size()-1).getID() + 1);
+        System.out.println(" ++++++++++++ Dodanie kategorii ++++++++++++");
         Scanner scanner = new Scanner(System.in);
         String newCategoryName;
         List<String> categoriesNames = categories.stream()
@@ -66,29 +77,37 @@ public class CategoryService {
 
         CreateData update = new CreateData();
         update.writeCategories(categories);
+        System.out.println("\tNowa kategoria została dodana");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     public void removeCategory() throws FileNotFoundException {
+        System.out.println("----------- Usunięcie kategorii -----------");
         Scanner scanner = new Scanner(System.in);
         String categoryToRemove;
         List<String> categoriesNames = categories.stream()
                 .map(Category::getName)
                 .toList();
         do {
-            System.out.print("Podaj nazwę kategorii do usunięcia: ");
+            System.out.print("Podaj nazwę kategorii do usunięcia( -1 żeby cofnąć): ");
             categoryToRemove = scanner.nextLine();
+            if(categoryToRemove.equals("-1")) {
+                break;
+            }
             if (!Category.isNameCorrect(categoryToRemove)) {
                 System.out.println("\tNiepoprawna nazwa! Proszę podać nazwę do czterech słów bez cyfr i znaków specjalnych");
             } else if (!categoriesNames.contains(categoryToRemove)) {
                 System.out.println("\tKategoria o takiej nazwie nie istnieje! Proszę podać inną nazwę");
             } else {
                 categories.remove(findByName(categoryToRemove));
+                System.out.println("\tKategoria została usunięta");
                 break;
             }
         } while (true);
 
         CreateData update = new CreateData();
         update.writeCategories(categories);
+        System.out.println("--------------------------------------------");
     }
 
     private int findByName(final String name) {

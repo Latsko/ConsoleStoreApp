@@ -28,6 +28,7 @@ public class ReadData {
             productList.add(currentProduct);
         }
 
+//        Category.setLastIDToZero();
         return productList;
     }
 
@@ -38,8 +39,7 @@ public class ReadData {
         JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
         for (int i = 0; i < read.length(); i++) {
             String name = read.getJSONObject(i).getString("name");
-
-            Category currentCategory = new Category(name);
+            Category currentCategory = new Category(name, i);
             categoryList.add(currentCategory);
         }
 

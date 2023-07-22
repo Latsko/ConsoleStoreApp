@@ -33,7 +33,7 @@ public class Menu {
 
                     break;
                 case 2:
-
+                    categoryServiceOptions();
                     break;
                 case 3:
                     productServiceOptions();
@@ -46,6 +46,44 @@ public class Menu {
             }
         }
         System.out.println("========== Koniec działania programu ===========");
+    }
+
+    private void categoryServiceOptions() throws FileNotFoundException {
+        boolean localExitFlag = false;
+        choice = 0;
+        while (!localExitFlag) {
+            System.out.println("******* Operacje na produktach *******");
+            System.out.println("\t1 - Pokaż wszystkie kategorie");
+            System.out.println("\t2 - Pokaż informacje o podanej kategorii");
+            System.out.println("\t3 - Dodaj kategorię");
+            System.out.println("\t4 - Usuń kategorię");
+            System.out.println("\t5 - Cofnij");
+
+            System.out.print("Wybierz opcję: ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    categoryService.showAllCategories();
+                    break;
+                case 2:
+                    categoryService.showCategory();
+                    break;
+                case 3:
+                    categoryService.addCategory();
+                    break;
+                case 4:
+                    categoryService.removeCategory();
+                    break;
+                case 5:
+                    localExitFlag = true;
+                    break;
+                default:
+                    System.out.println("\tNiepoprawny numer opcji!");
+            }
+        }
+        CreateData update = new CreateData();
+        update.writeProducts(productService.getProducts());
+        System.out.println("**************************************");
     }
 
     private void productServiceOptions() throws FileNotFoundException {

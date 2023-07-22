@@ -11,6 +11,18 @@ public class Category {
         checkName(name);
         this.name = name;
         this.ID = lastID++;
+        System.out.println(ID);
+    }
+
+    public Category(final String name, final int id) {
+        System.out.println(id);
+        checkName(name);
+        this.name = name;
+        this.ID = id;
+    }
+
+    public static void setLastID(int currentLast) {
+        lastID = currentLast;
     }
 
     private void checkName(final String name) {
