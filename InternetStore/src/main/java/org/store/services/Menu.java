@@ -30,7 +30,7 @@ public class Menu {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-
+                    orderServiceOption();
                     break;
                 case 2:
                     categoryServiceOptions();
@@ -46,6 +46,54 @@ public class Menu {
             }
         }
         System.out.println("========== Koniec działania programu ===========");
+    }
+
+    private void orderServiceOption() throws FileNotFoundException {
+        boolean localExitFlag = false;
+        choice = 0;
+        while (!localExitFlag) {
+            System.out.println("******* Operacje na zamówieniach *******");
+            System.out.println("\t1 - Pokaż wszystkie zamówienia");
+            System.out.println("\t2 - Pokaż informacje o podanym zamówieniu");
+            System.out.println("\t3 - Dodaj zamówienie");
+            System.out.println("\t4 - Usuń zamówienie");
+            System.out.println("\t5 - Zmień status zamówienia");
+            System.out.println("\t6 - Pokaż status zamówienia");
+            System.out.println("\t7 - Dodaj produkt do zamówienia");
+            System.out.println("\t8 - Cofnij");
+
+            System.out.print("Wybierz opcję: ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    orderService.showAllOrders();
+                    break;
+                case 2:
+                    orderService.showOrder();
+                    break;
+                case 3:
+                    orderService.addOrder();
+                    break;
+                case 4:
+                    orderService.removeOrder();
+                    break;
+                case 5:
+                    orderService.changeStatus();
+                    break;
+                case 6:
+                    orderService.showOrderStatus();
+                    break;
+                case 7:
+                    orderService.addProductToOrder();
+                    break;
+                case 8:
+                    localExitFlag = true;
+                    break;
+                default:
+                    System.out.println("\tNiepoprawny numer opcji!");
+            }
+            System.out.println("****************************************");
+        }
     }
 
     private void categoryServiceOptions() throws FileNotFoundException {

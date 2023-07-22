@@ -52,8 +52,6 @@ public class ProductService {
             }
             if (searched != null) {
                 products.remove(searched);
-//                CreateData update = new CreateData();
-//                update.createProducts(products);
                 break;
             } else {
                 System.out.println("Nie ma produktu pod takim id, spróbuj podać inny.");
@@ -131,7 +129,7 @@ public class ProductService {
         do {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
-            if (!Category.isNameCorrect((inputCategoryName))) {
+            if (Category.isNameCorrect((inputCategoryName))) {
                 System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów bez znaków specjalnych.");
             } else if (productsNames.contains(inputCategoryName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
@@ -157,8 +155,6 @@ public class ProductService {
         } while (true);
 
         products.add(new Product(inputPrice, inputProductName, inputCategory, inputQuantity));
-//        CreateData update = new CreateData();
-//        update.createProducts(products);
 
         System.out.println("\tNowy produkt był dodany do listy");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++");

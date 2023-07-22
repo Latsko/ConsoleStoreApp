@@ -24,6 +24,7 @@ public class OrderService {
     }
 
     public void removeOrder() {
+        System.out.println("+++++++++++++++++++++ Usunięcie zamówienia +++++++++++++++++++++");
         Scanner scanner = new Scanner(System.in);
         showAllOrders();
         do {
@@ -43,9 +44,11 @@ public class OrderService {
                 System.out.println("Nie udało się znaleźć zamówienie pod takim numerem. Spróbuj ponownie.");
             }
         } while(true);
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     public void addProductToOrder() throws FileNotFoundException {
+        System.out.println("+++++++++++++++ Dodawanie produktu do zamówienia ++++++++++++++++");
         int productID, orderID, quantity;
         Scanner scanner = new Scanner(System.in);
         ProductService productService = new ProductService();
@@ -103,9 +106,11 @@ public class OrderService {
         } else {
             throw new IllegalArgumentException("No order under that ID!");
         }
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     public void showOrderStatus() {
+        System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ Pokaż status zamówienia ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
         System.out.print("Proszę podać ID zamówienia: ");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
@@ -120,9 +125,11 @@ public class OrderService {
         } else {
             System.out.println("Niepoprawny ID");
         }
+        System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
     }
 
     public void changeStatus() {
+        System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ Zmień status zamówienia ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
         System.out.print("Proszę podać ID zamówienia: ");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
@@ -144,10 +151,14 @@ public class OrderService {
                     default -> System.out.println("Podałeś niepoprawną liczbę!");
                 }
             }
+        } else {
+            System.out.println("\tNiepoprawny ID");
         }
+        System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
     }
 
     public void addOrder() {
+        System.out.println("++++++++++++++++++ Dodawanie nowego zamówienia ++++++++++++++++++");
         Scanner scanner = new Scanner(System.in);
         String name, surName, address;
 
@@ -174,15 +185,16 @@ public class OrderService {
         do {
             System.out.print("Address klienta: ");
             address = scanner.nextLine();
-            if (!Order.isClientAddressCorrect(address)) {
-                System.out.println("\tAdres nie powinien się składać z więcej, niż sześciu słów!");
+            if (Order.isClientAddressCorrect(address)) {
+                System.out.println("\tAdres nie powinien się składać z więcej, niż sześć słów!");
             } else {
                 break;
             }
         } while (true);
 
         orderList.add(new Order(createUniqueOrderNumber(), name, surName, address));
-
+        System.out.println("\tZamówienie zostało dodane");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     public void showAllOrders() {
@@ -195,6 +207,7 @@ public class OrderService {
     }
 
     public void showOrder() {
+        showAllOrders();
         final String orderNum;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj numer zamówienia: ");

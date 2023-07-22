@@ -31,7 +31,7 @@ public class Order {
     }
 
     public static boolean isClientAddressCorrect(final String address) {
-        return address.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$");
+        return !address.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$");
     }
 
     public static boolean isClientNameCorrect(final String name) {

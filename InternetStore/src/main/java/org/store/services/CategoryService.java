@@ -65,7 +65,7 @@ public class CategoryService {
         do {
             System.out.print("Podaj nazwę dodawanej kategorii: ");
             newCategoryName = scanner.nextLine();
-            if (!Category.isNameCorrect(newCategoryName)) {
+            if (Category.isNameCorrect(newCategoryName)) {
                 System.out.println("\tNiepoprawna nazwa! Proszę podać nazwę do czterech słów bez cyfr i znaków specjalnych");
             } else if (categoriesNames.contains(newCategoryName)) {
                 System.out.println("\tKategoria o takiej nazwie już istnieje! Proszę podać inną nazwę");
@@ -94,7 +94,7 @@ public class CategoryService {
             if(categoryToRemove.equals("-1")) {
                 break;
             }
-            if (!Category.isNameCorrect(categoryToRemove)) {
+            if (Category.isNameCorrect(categoryToRemove)) {
                 System.out.println("\tNiepoprawna nazwa! Proszę podać nazwę do czterech słów bez cyfr i znaków specjalnych");
             } else if (!categoriesNames.contains(categoryToRemove)) {
                 System.out.println("\tKategoria o takiej nazwie nie istnieje! Proszę podać inną nazwę");
