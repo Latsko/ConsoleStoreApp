@@ -1,10 +1,10 @@
 package org.store.services.fileHandling;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.store.entities.Category;
 import org.store.entities.Order;
 import org.store.entities.Product;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -25,6 +25,7 @@ public class CreateData {
     public static Path getCategoriesPath() {
         return categoriesPath;
     }
+
     public static Path getOrdersPath() {
         return ordersPath;
     }
@@ -201,11 +202,10 @@ public class CreateData {
         if (newOrders != null) {
             for (Order order : newOrders) {
                 jsonObjects.add(new JSONObject()
-                        //.put("id", order.getID())
                         .put("orderNumber", order.getOrderNumber())
                         .put("basket", order.getBasket())
                         .put("clientName", order.getClientName())
-                        .put("clientSurname",order.getClientSurName())
+                        .put("clientSurname", order.getClientSurName())
                         .put("address", order.getClientAddress())
                         .put("orderSum", order.getNumberSum())
                         .put("status", order.getStatus()));

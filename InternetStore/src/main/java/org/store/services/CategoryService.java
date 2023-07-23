@@ -23,6 +23,10 @@ public class CategoryService {
         categories = new ArrayList<>(readData.readCategoriesFromFile());
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public void showCategory() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj nazwę kategorii: ");
@@ -56,7 +60,6 @@ public class CategoryService {
     }
 
     public void addCategory() throws FileNotFoundException {
-        //Category.setLastID(categories.get(categories.size()-1).getID() + 1);
         System.out.println(" ++++++++++++ Dodanie kategorii ++++++++++++");
         Scanner scanner = new Scanner(System.in);
         String newCategoryName;
