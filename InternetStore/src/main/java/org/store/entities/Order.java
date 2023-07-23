@@ -31,11 +31,11 @@ public class Order {
     }
 
     public static boolean isClientAddressCorrect(final String address) {
-        return address.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$");
+        return !address.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$");
     }
 
     public static boolean isClientNameCorrect(final String name) {
-        return name.matches("^[A-Za-z]+$");
+        return name.matches("^[ąęŁłśćźńóżA-Za-z]+$");
     }
 
     public static boolean isClientSurNameCorrect(final String surName) {
@@ -43,13 +43,13 @@ public class Order {
     }
 
     private void checkClientFullName(final String name, final String surName) {
-        if(!name.matches("^[A-Za-z]+$") || !surName.matches("^[A-Za-z]+$")) {
+        if(!name.matches("^[ąęŁłśćźńóżA-Za-z]+$") || !surName.matches("^[ąęŁłśćźńóżA-Za-z]+$")) {
             throw new IllegalArgumentException("Client name and surname must consist only of letters");
         }
     }
 
     private void checkClientAddress(final String address) {
-        if (!address.matches("^([a-zA-Z+\\-0-9.]+)(\\s[\\\\/a-zA-Z+\\-0-9.]+){0,5}$")) {
+        if (!address.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$")) {
             throw new IllegalArgumentException("Client address must consist with no more than 6 words");
         }
     }

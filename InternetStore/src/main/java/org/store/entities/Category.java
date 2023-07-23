@@ -13,14 +13,24 @@ public class Category {
         this.ID = lastID++;
     }
 
+    public Category(final String name, final int id) {
+        checkName(name);
+        this.name = name;
+        this.ID = id;
+    }
+
+    public static void setLastID(int currentLast) {
+        lastID = currentLast;
+    }
+
     private void checkName(final String name) {
-        if(!name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$")) {
+        if(!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
             throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
         }
     }
 
     public static boolean isNameCorrect(final String name) {
-        return name.matches("(^[A-Za-z]+(\\s[A-Za-z]+){0,3})$");
+        return name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$");
     }
 
     public int getID() {

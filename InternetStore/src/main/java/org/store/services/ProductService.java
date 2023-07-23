@@ -15,16 +15,58 @@ public class ProductService {
     private final ReadData readData = new ReadData();
     private final List<Product> products;
 
-    public ProductService() throws FileNotFoundException {
-        File productFile = CreateData.getProductsPath().toFile();
-        if (productFile.exists()) {
-            products = new ArrayList<>(readData.readProductsFromFile());
-        } else {
-            products = new ArrayList<>();
-        }
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void showProduct(String name) throws FileNotFoundException {
+    public ProductService() throws FileNotFoundException {
+        File productFile = CreateData.getProductsPath().toFile();
+        if (!productFile.exists()) {
+            new CreateData().createProducts();
+        }
+        products = readData.readProductsFromFile();
+    }
+
+    public Product getProductByID(int id) {
+        for (Product product : products) {
+            if (product.getID() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public void removeProduct() {
+        System.out.println("-------- Usunięcie produktu z listy --------");
+        Scanner scanner = new Scanner(System.in);
+        int inputID;
+        showAllProducts();
+
+        do {
+            System.out.print("Podaj ID usuwanego produktu( -1 - żeby cofnąć): ");
+            inputID = scanner.nextInt();
+
+            Product searched = getProductByID(inputID);
+            if (inputID == -1) {
+                return;
+            }
+            if (searched != null) {
+                products.remove(searched);
+                break;
+            } else {
+                System.out.println("Nie ma produktu pod takim id, spróbuj podać inny.");
+            }
+        } while (true);
+
+        System.out.println("--------- Produkt został usunięty ----------");
+        System.out.println("--------------------------------------------");
+    }
+
+    public void showProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj nazwę produktu: ");
+        String name = scanner.nextLine();
+
         Product foundProduct = products.stream()
                 .filter(product -> product.getName().equals(name))
                 .findAny()
@@ -46,12 +88,12 @@ public class ProductService {
     }
 
     public void addProduct() throws FileNotFoundException {
-        System.out.println(Product.lastID);
         Scanner scanner = new Scanner(System.in);
         String inputProductName;
         List<String> productsNames = products.stream()
                 .map(Product::getName)
                 .toList();
+        System.out.println(" +++++++++++++ Dodanie produktu +++++++++++++");
         do {
             System.out.print("Podaj nazwę dodawanego produktu: ");
             inputProductName = scanner.nextLine();
@@ -69,7 +111,7 @@ public class ProductService {
         do {
             System.out.print("Podaj cenę: ");
             inputPrice = scanner.nextDouble();
-            if(inputPrice <= 0) {
+            if (inputPrice <= 0) {
                 System.out.println("Cena nie może być mniejsza lub równa zero!");
             } else {
                 scanner.nextLine();
@@ -87,8 +129,8 @@ public class ProductService {
         do {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
-            if (!Category.isNameCorrect(inputCategoryName)) {
-                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów.");
+            if (Category.isNameCorrect((inputCategoryName))) {
+                System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów bez znaków specjalnych.");
             } else if (productsNames.contains(inputCategoryName)) {
                 System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
             } else if (!categoryNameList.contains(inputCategoryName)) {
@@ -104,7 +146,7 @@ public class ProductService {
         do {
             System.out.print("Podaj ilość w magazynie: ");
             inputQuantity = scanner.nextInt();
-            if(inputQuantity <= 0) {
+            if (inputQuantity <= 0) {
                 System.out.println("Ilość nie może być mniejsza lub równa zero!");
             } else {
                 scanner.nextLine();
@@ -113,7 +155,8 @@ public class ProductService {
         } while (true);
 
         products.add(new Product(inputPrice, inputProductName, inputCategory, inputQuantity));
-        CreateData update = new CreateData();
-        update.createProducts(products);
+
+        System.out.println("\tNowy produkt był dodany do listy");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
     }
 }
