@@ -74,8 +74,8 @@ public class ProductService {
 
         if (foundProduct != null) {
             System.out.println("[" + foundProduct.getID() + "] " + foundProduct.getName() +
-                    "\n\tPrice: " + foundProduct.getPrice() + "\n\tCategory: " + foundProduct.getCategory().getName()
-                    + "\n\tQuantity: " + foundProduct.getQuantity());
+                    "\n\tCena: " + foundProduct.getPrice() + "\n\tKategoria: " + foundProduct.getCategory().getName()
+                    + "\n\tIlość w magazynie: " + foundProduct.getQuantity());
         } else {
             System.out.println("Niepoprawny produkt");
         }
