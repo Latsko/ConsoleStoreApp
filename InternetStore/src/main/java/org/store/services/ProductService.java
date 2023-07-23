@@ -2,8 +2,9 @@ package org.store.services;
 
 import org.store.entities.Category;
 import org.store.entities.Product;
-import org.store.services.fileHandling.CreateData;
 import org.store.services.fileHandling.ReadData;
+import org.store.services.fileHandling.WriteData;
+import org.store.services.helper.CreateData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,7 +23,7 @@ public class ProductService {
     public ProductService() throws FileNotFoundException {
         File productFile = CreateData.getProductsPath().toFile();
         if (!productFile.exists()) {
-            new CreateData().createProducts();
+            new WriteData().createProductsInFile();
         }
         products = readData.readProductsFromFile();
     }
@@ -129,10 +130,8 @@ public class ProductService {
         do {
             System.out.print("Podaj nazwę kategorii: ");
             inputCategoryName = scanner.nextLine();
-            if (Category.isNameCorrect((inputCategoryName))) {
+            if (!Category.isNameCorrect((inputCategoryName))) {
                 System.out.println("\tNiepoprawna nazwa. Proszę podać nazwę do 8 wyrazów bez znaków specjalnych.");
-            } else if (productsNames.contains(inputCategoryName)) {
-                System.out.println("\tProdukt o takiej nazwie już istnieje. Proszę podać inną nazwę.");
             } else if (!categoryNameList.contains(inputCategoryName)) {
                 System.out.println("\tNie ma takiej kategorii!\nLista aktualnych kategorii:");
                 categoryNameList.forEach(System.out::println);

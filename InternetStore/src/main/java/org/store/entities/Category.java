@@ -24,7 +24,7 @@ public class Category {
     }
 
     private void checkName(final String name) {
-        if(!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
+        if (!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
             throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
         }
     }
