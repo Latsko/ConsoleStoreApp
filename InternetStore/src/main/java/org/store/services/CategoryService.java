@@ -23,11 +23,10 @@ public class CategoryService {
 
     public void removeCategory(String categoryToRemove) {
         Category category = findByName(categoryToRemove);
-        if (category != null) {
-            categories.remove(category);
-        } else {
+        if (category == null) {
             throw new IllegalArgumentException("No category under that name was found!");
         }
+        categories.remove(category);
     }
 
     private Category findByName(final String name) {
