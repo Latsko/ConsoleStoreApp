@@ -2,18 +2,15 @@ package org.store.services;
 
 import org.store.entities.Category;
 import org.store.entities.Product;
-import org.store.services.fileHandling.ReadData;
-import org.store.services.fileHandling.WriteData;
-import org.store.services.helper.CreateData;
+import org.store.services.fileHandling.FileService;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ProductService {
-    private final ReadData readData = new ReadData();
+    private final FileService fileService = new FileService();
     private final List<Product> products;
 
     public List<Product> getProducts() {
@@ -21,12 +18,9 @@ public class ProductService {
     }
 
     public ProductService() throws FileNotFoundException {
-        File productFile = CreateData.getProductsPath().toFile();
-        if (!productFile.exists()) {
-            new WriteData().createProductsInFile();
-        }
-        products = readData.readProductsFromFile();
+        products = fileService.readProductsFromFile();
     }
+
 
     public Product getProductByID(int id) {
         for (Product product : products) {
@@ -123,7 +117,7 @@ public class ProductService {
         Category inputCategory;
         String inputCategoryName;
         // need this lists for further category names validation
-        List<Category> categoryList = new ArrayList<>(readData.readCategoriesFromFile());
+        List<Category> categoryList = new ArrayList<>(fileService.readCategoriesFromFile());
         List<String> categoryNameList = categoryList.stream()
                 .map(Category::getName)
                 .toList();

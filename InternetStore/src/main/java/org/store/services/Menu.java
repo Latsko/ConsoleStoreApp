@@ -1,8 +1,8 @@
 package org.store.services;
 
 import org.store.entities.Category;
-import org.store.services.fileHandling.ReadData;
-import org.store.services.fileHandling.WriteData;
+import org.store.services.fileHandling.FileService;
+import org.store.services.helper.Formatter;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -14,9 +14,11 @@ public class Menu {
     private final CategoryService categoryService;
     private final OrderService orderService;
     private int choice = 0;
+    private final FileService fileService;
 
     public Menu() throws FileNotFoundException {
-        categoryService = new CategoryService(new ReadData());
+        fileService = new FileService();
+        categoryService = new CategoryService(fileService);
         productService = new ProductService();
         orderService = new OrderService();
         boolean exit = false;
@@ -55,7 +57,7 @@ public class Menu {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> {
-                    System.out.println(categoryService.showAllCategories());
+                    System.out.println("\t" + Formatter.formatAllCategories(categoryService.getCategories()));
                 }
                 case 2 -> {
                     List<Category> categories = categoryService.getCategories();
@@ -75,7 +77,7 @@ public class Menu {
                     if (foundCategory != null) {
                         System.out.println("-------------- ID [" + foundCategory.getID() + "] " +
                                 foundCategory.getName() + " --------------");
-                        System.out.println(categoryService.showCategory(name));
+                        System.out.println(Formatter.formatCategory(name, productService.getProducts()));
                     } else {
                         System.out.println("Niepoprawna kategoria");
                     }
@@ -102,6 +104,8 @@ public class Menu {
                     } while (true);
 
                     categoryService.addCategory(newCategoryName);
+                    //zapis
+                    fileService.writeCategories(categories);
 
                     System.out.println("\tNowa kategoria została dodana");
                     System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
@@ -133,6 +137,8 @@ public class Menu {
 
                     if (removeFlag) {
                         categoryService.removeCategory(categoryToRemove);
+                        //aktualizacja
+                        fileService.writeCategories(categories);
                         System.out.println("\tKategoria została usunięta");
                     }
 
@@ -142,8 +148,6 @@ public class Menu {
                 default -> System.out.println("\tNiepoprawny numer opcji!");
             }
         }
-        WriteData update = new WriteData();
-        update.writeProducts(productService.getProducts());
         System.out.println("**************************************");
     }
 
@@ -170,7 +174,7 @@ public class Menu {
             }
         }
 
-        WriteData update = new WriteData();
+        FileService update = new FileService();
         update.writeProducts(productService.getProducts());
         System.out.println("**************************************");
     }
@@ -202,7 +206,7 @@ public class Menu {
                 case 8 -> localExitFlag = true;
                 default -> System.out.println("\tNiepoprawny numer opcji!");
             }
-            WriteData update = new WriteData();
+            FileService update = new FileService();
             update.writeOrders(orderService.getOrderList());
         }
         System.out.println("****************************************");
