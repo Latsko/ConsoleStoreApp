@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Menu {
     final private Scanner scanner = new Scanner(System.in);
     private final ProductService productService;

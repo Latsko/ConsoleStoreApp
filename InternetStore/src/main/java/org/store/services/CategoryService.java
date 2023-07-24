@@ -21,8 +21,11 @@ public class CategoryService {
         categories.add(new Category(newCategoryName));
     }
 
-    public void removeCategory(String categoryToRemove) {
-        Category category = findByName(categoryToRemove);
+    public void removeCategory(final String categoryToRemove) {
+        if (categories == null) {
+            throw new NullPointerException("There is no elements to remove!");
+        }
+        final Category category = findByName(categoryToRemove);
         if (category == null) {
             throw new IllegalArgumentException("No category under that name was found!");
         }
