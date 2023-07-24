@@ -19,12 +19,12 @@ public class Category {
         this.ID = id;
     }
 
-    public static void setLastID(int currentLast) {
+    public static void setLastID(final int currentLast) {
         lastID = currentLast;
     }
 
     private void checkName(final String name) {
-        if(!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
+        if (!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
             throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
         }
     }
@@ -44,7 +44,8 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "name='" + name + '\'' +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
                 '}';
     }
 
