@@ -11,7 +11,7 @@ public class Order {
     private final String clientName;
     private final String clientSurName;
     private final String clientAddress;
-    private final Map<Integer, Product> basket;
+    private final Map<Product, Integer> basket;
     private double numberSum;
     private OrderStatus status;
 
@@ -43,7 +43,7 @@ public class Order {
     }
 
     private void checkClientFullName(final String name, final String surName) {
-        if(!name.matches("^[ąęŁłśćźńóżA-Za-z]+$") || !surName.matches("^[ąęŁłśćźńóżA-Za-z]+$")) {
+        if (!name.matches("^[ąęŁłśćźńóżA-Za-z]+$") || !surName.matches("^[ąęŁłśćźńóżA-Za-z]+$")) {
             throw new IllegalArgumentException("Client name and surname must consist only of letters");
         }
     }
@@ -84,7 +84,7 @@ public class Order {
         this.numberSum = this.numberSum + price * quantity;
     }
 
-    public Map<Integer, Product> getBasket() {
+    public Map<Product, Integer> getBasket() {
         return basket;
     }
 

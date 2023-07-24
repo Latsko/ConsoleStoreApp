@@ -27,7 +27,7 @@ public class OrderService {
             throw new IllegalArgumentException("No order under that ID!");
         }
         order.addToSum(searched.getPrice(), quantity);
-        order.getBasket().put(quantity, searched);
+        order.getBasket().put(searched, quantity);
     }
 
     public void changeStatus(final int status, final Order searched) {

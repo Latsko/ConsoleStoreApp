@@ -25,7 +25,7 @@ public class Formatter {
             formatted += "Kosz jest pusty";
         } else {
             formatted += searchedOrder.getBasket().entrySet().stream()
-                    .map(entry -> entry.getValue().getName() + " - " + entry.getKey() + "\n")
+                    .map(entry -> entry.getValue() + " - " + entry.getKey().getName() + "\n")
                     .collect(Collectors.joining())
                     .trim();
         }

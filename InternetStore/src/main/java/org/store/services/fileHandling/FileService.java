@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FileService {
     public FileService() throws FileNotFoundException {
@@ -27,7 +28,8 @@ public class FileService {
             createCategoriesInFile();
         }
     }
-    //    public List<Order> readOrdersFromFile() throws FileNotFoundException {
+
+//    public List<Order> readOrdersFromFile() throws FileNotFoundException {
 //        File file = CreateData.getOrdersPath().toFile();
 //        List<Order> orderList = new ArrayList<>();
 //        JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
@@ -40,7 +42,9 @@ public class FileService {
 //            double orderSum = read.getJSONObject(i).getDouble("orderSum");
 //            OrderStatus orderStatus = OrderStatus.getOrderFromString(read.getJSONObject(i).getString("status"));
 //            // do no know how to read collection which contains collection
-//
+//            JSONArray basket = read.getJSONObject(i).getJSONArray("basket");
+//            // then make a method, which will take JSONArray, and returns Map<Product, Integer>
+//            // to be able to make a basket
 //        }
 //        return null;
 //    }
@@ -117,12 +121,12 @@ public class FileService {
     }
 
     public void writeOrders(List<Order> newOrders) throws FileNotFoundException {
-        List<JSONObject> jsonObjects = new ArrayList<>();
+        JSONArray jsonObjects = new JSONArray();
         if (newOrders != null) {
             for (Order order : newOrders) {
-                jsonObjects.add(new JSONObject()
+                jsonObjects.put(new JSONObject()
                         .put("orderNumber", order.getOrderNumber())
-                        .put("basket", order.getBasket())
+                        .put("basket", mapToJSONArray(order.getBasket()))
                         .put("clientName", order.getClientName())
                         .put("clientSurname", order.getClientSurName())
                         .put("address", order.getClientAddress())
@@ -138,9 +142,19 @@ public class FileService {
         }
     }
 
+    private JSONArray mapToJSONArray(Map<Product, Integer> map) {
+        JSONArray result = new JSONArray();
+        for (Map.Entry<Product, Integer> entry : map.entrySet()) {
+            result.put(new JSONObject()
+                    .put("product", entry.getKey().getID())
+                    .put("quantity", entry.getValue()));
+        }
+
+        return result;
+    }
+
     public void createProductsInFile() throws FileNotFoundException {
         List<JSONObject> jsonObjects = new ArrayList<>();
-        final Category[] categories = CreateData.getCategories();
 
         Product[][] allProducts = CreateData.getProducts();
         for (Product[] category : allProducts) {
