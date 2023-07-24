@@ -60,7 +60,7 @@ public class Order {
         }
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(final OrderStatus status) {
         this.status = status;
     }
 
@@ -80,7 +80,7 @@ public class Order {
         return clientAddress;
     }
 
-    public void addToSum(double price, int quantity) {
+    public void addToSum(final double price, final int quantity) {
         this.numberSum = this.numberSum + price * quantity;
     }
 

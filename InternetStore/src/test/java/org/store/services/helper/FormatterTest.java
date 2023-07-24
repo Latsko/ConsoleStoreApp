@@ -2,6 +2,7 @@ package org.store.services.helper;
 
 import org.junit.jupiter.api.Test;
 import org.store.entities.Category;
+import org.store.entities.Order;
 import org.store.entities.Product;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -14,7 +15,7 @@ class FormatterTest {
         final Category category = new Category("name", 1);
 
         //when
-        String expected = Formatter.formatCategory(category);
+        final String expected = Formatter.formatCategory(category);
 
         //then
         assertThat(expected).isEqualTo("ID [1] name");
@@ -37,10 +38,22 @@ class FormatterTest {
     @Test
     void formatOrder() {
         //given
+        final Order order = new Order("00000000", "Name", "Surname", "address");
 
         //when
+        String expected = Formatter.formatOrder(order);
 
         //then
+        assertThat(expected).isEqualTo("""
+                00000000
+                [0]\tClient info\s
+                \tName: Name Surname
+                \tAddress: address
+                === Aktualne produkty w koszyku ===\s
 
+                Kosz jest pusty
+
+                Łączna suma zamówienia: 0.0
+                Status zamówienia: CREATED""");
     }
 }

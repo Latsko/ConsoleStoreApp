@@ -1,5 +1,6 @@
 package org.store.services;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 import org.store.entities.Category;
 import org.store.entities.Order;
@@ -9,16 +10,29 @@ import org.store.entities.Product;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OrderServiceTest {
 
     @Test
     void removeOrder() {
         //given
+        OrderService orderService = new OrderService();
 
         //when
+        final ThrowableAssert.ThrowingCallable callable1 = () ->
+                orderService.removeOrder(null);
+        final ThrowableAssert.ThrowingCallable callable2 = () ->
+                orderService.removeOrder(new Order("00000000", "name", "surname", "address"));
 
         //then
+        assertThatThrownBy(callable1)
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("Method argument is null!");
+
+        assertThatThrownBy(callable2)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("There is no elements to remove!");
     }
 
     @Test
@@ -31,7 +45,7 @@ class OrderServiceTest {
         orderService.addProductToOrder(order, product, 1);
         //then
         assertThat(order.getBasket()).hasSize(1);
-        assertThat(order.getBasket()).containsValue(product);
+        assertThat(order.getBasket()).containsKey(product);
     }
 
     @Test
@@ -58,10 +72,15 @@ class OrderServiceTest {
     @Test
     void addOrder() {
         //given
-
+        final OrderService orderService = new OrderService();
+        
         //when
+        orderService.addOrder("Name", "SurName", "Address");
+        orderService.addOrder("Name", "SurName", "Address");
+        orderService.addOrder("Name", "SurName", "Address");
 
         //then
+        assertThat(orderService.getOrderList()).hasSize(3);
     }
 
     @Test

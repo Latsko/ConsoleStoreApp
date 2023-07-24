@@ -14,11 +14,11 @@ public class ProductService {
         return products;
     }
 
-    public ProductService(FileService fileService) throws FileNotFoundException {
+    public ProductService(final FileService fileService) throws FileNotFoundException {
         products = fileService.readProductsFromFile();
     }
 
-    public Product getProductByID(int id) {
+    public Product getProductByID(final int id) {
         for (Product product : products) {
             if (product.getID() == id) {
                 return product;
@@ -27,14 +27,14 @@ public class ProductService {
         return null;
     }
 
-    public void removeProduct(Product searched) {
+    public void removeProduct(final Product searched) {
         if (searched == null) {
             throw new IllegalArgumentException("Argument in this function is null!");
         }
         products.remove(searched);
     }
 
-    public void addProduct(String inputProductName, double inputPrice, String inputCategoryName, int inputQuantity) {
+    public void addProduct(final String inputProductName, final double inputPrice, final String inputCategoryName, final int inputQuantity) {
         products.add(new Product(inputPrice, inputProductName, new Category(inputCategoryName), inputQuantity));
     }
 }

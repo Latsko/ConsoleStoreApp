@@ -17,20 +17,20 @@ public class Formatter {
                 + "\n\tIlość w magazynie: " + product.getQuantity();
     }
 
-    public static String formatOrder(Order searchedOrder) {
-        String formatted = searchedOrder.getOrderNumber() + "\n" + "[" + searchedOrder.getID() + "]"
-                + "\tClient info \n\tName: " + searchedOrder.getClientName() + searchedOrder.getClientSurName() +
-                "\n\tAddress: " + searchedOrder.getClientAddress() + "\n" + "=== Aktualne produkty w koszyku === \n\n";
-        if (searchedOrder.getBasket().isEmpty()) {
+    public static String formatOrder(Order order) {
+        String formatted = order.getOrderNumber() + "\n" + "[" + order.getID() + "]"
+                + "\tClient info \n\tName: " + order.getClientName() + " " + order.getClientSurName() +
+                "\n\tAddress: " + order.getClientAddress() + "\n" + "=== Aktualne produkty w koszyku === \n\n";
+        if (order.getBasket().isEmpty()) {
             formatted += "Kosz jest pusty";
         } else {
-            formatted += searchedOrder.getBasket().entrySet().stream()
+            formatted += order.getBasket().entrySet().stream()
                     .map(entry -> entry.getValue() + " - " + entry.getKey().getName() + "\n")
                     .collect(Collectors.joining())
                     .trim();
         }
-        formatted += "\n\nŁączna suma zamówienia: " + searchedOrder.getNumberSum() +
-                "\nStatus zamówienia: " + searchedOrder.getStatus();
+        formatted += "\n\nŁączna suma zamówienia: " + order.getNumberSum() +
+                "\nStatus zamówienia: " + order.getStatus();
 
         return formatted;
     }

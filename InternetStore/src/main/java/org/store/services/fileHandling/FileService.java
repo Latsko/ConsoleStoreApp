@@ -100,7 +100,7 @@ public class FileService {
         }
     }
 
-    public void writeProducts(List<Product> products) throws FileNotFoundException {
+    public void writeProducts(final List<Product> products) throws FileNotFoundException {
         List<JSONObject> jsonObjects = new ArrayList<>();
         if (products != null) {
             for (Product product : products) {
@@ -120,7 +120,7 @@ public class FileService {
         }
     }
 
-    public void writeOrders(List<Order> newOrders) throws FileNotFoundException {
+    public void writeOrders(final List<Order> newOrders) throws FileNotFoundException {
         JSONArray jsonObjects = new JSONArray();
         if (newOrders != null) {
             for (Order order : newOrders) {
@@ -142,7 +142,7 @@ public class FileService {
         }
     }
 
-    private JSONArray mapToJSONArray(Map<Product, Integer> map) {
+    private JSONArray mapToJSONArray(final Map<Product, Integer> map) {
         JSONArray result = new JSONArray();
         for (Map.Entry<Product, Integer> entry : map.entrySet()) {
             result.put(new JSONObject()

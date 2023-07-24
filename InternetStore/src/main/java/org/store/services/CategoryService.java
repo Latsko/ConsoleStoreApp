@@ -17,7 +17,7 @@ public class CategoryService {
         return categories;
     }
 
-    public void addCategory(String newCategoryName) {
+    public void addCategory(final String newCategoryName) {
         categories.add(new Category(newCategoryName));
     }
 

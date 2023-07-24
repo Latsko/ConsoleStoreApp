@@ -95,6 +95,21 @@ class ProductServiceTest {
     }
 
     @Test
-    void addProduct() {
+    void addProduct() throws FileNotFoundException {
+        //given
+        FileService fileService = mock(FileService.class);
+        when(fileService.readProductsFromFile()).thenReturn(new ArrayList<>());
+        ProductService productService = new ProductService(fileService);
+
+        //when
+        productService.addProduct(
+                "Product Name",
+                100,
+                "Category name",
+                10);
+
+        //then
+        assertThat(productService.getProducts().size()).isEqualTo(1);
+
     }
 }

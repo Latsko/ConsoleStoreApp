@@ -19,7 +19,7 @@ public class Category {
         this.ID = id;
     }
 
-    public static void setLastID(int currentLast) {
+    public static void setLastID(final int currentLast) {
         lastID = currentLast;
     }
 

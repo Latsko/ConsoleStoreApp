@@ -15,14 +15,16 @@ public class OrderService {
         orderList = new ArrayList<>();
     }
 
-    public void removeOrder(Order searched) {
+    public void removeOrder(final Order searched) {
         if (searched == null) {
-            throw new IllegalArgumentException("Method argument is null!");
+            throw new NullPointerException("Method argument is null!");
+        } else if (orderList.isEmpty()) {
+            throw new IllegalArgumentException("There is no elements to remove!");
         }
         orderList.remove(searched);
     }
 
-    public void addProductToOrder(Order order, Product searched, int quantity) {
+    public void addProductToOrder(final Order order, final Product searched, final int quantity) {
         if (order == null) {
             throw new IllegalArgumentException("No order under that ID!");
         }
@@ -39,7 +41,7 @@ public class OrderService {
         }
     }
 
-    public void addOrder(String name, String surName, String address) {
+    public void addOrder(final String name, final String surName, final String address) {
         orderList.add(new Order(createUniqueOrderNumber(), name, surName, address));
     }
 
