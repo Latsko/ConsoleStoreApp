@@ -3,15 +3,9 @@ package org.store.entities;
 import java.util.Objects;
 
 public class Category {
-    private static int lastID = 0;
+    private final static String NAME_VALIDATION_REGEX = "(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$";
     private final int ID;
     private final String name;
-
-    public Category(final String name) {
-        checkName(name);
-        this.name = name;
-        this.ID = lastID++;
-    }
 
     public Category(final String name, final int id) {
         checkName(name);
@@ -19,18 +13,18 @@ public class Category {
         this.ID = id;
     }
 
-    public static void setLastID(final int currentLast) {
-        lastID = currentLast;
-    }
+//    //public static void setLastID(final int currentLast) {
+//        lastID = currentLast;
+//    }
 
     private void checkName(final String name) {
-        if (!name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$")) {
+        if (!name.matches(NAME_VALIDATION_REGEX)) {
             throw new IllegalArgumentException("Category name must consist of letters only and up to 4 words");
         }
     }
 
     public static boolean isNameCorrect(final String name) {
-        return name.matches("(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$");
+        return name.matches(NAME_VALIDATION_REGEX);
     }
 
     public int getID() {
