@@ -58,10 +58,10 @@ public class FileService {
             int id = read.getJSONObject(i).getInt("id");
             double price = read.getJSONObject(i).getDouble("price");
             String name = read.getJSONObject(i).getString("name");
-            Category category = new Category(read.getJSONObject(i).getString("category"));
+            Category category = new Category(read.getJSONObject(i).getString("category"), i);
             int quantity = read.getJSONObject(i).getInt("quantity");
 
-            Product currentProduct = new Product(price, name, category, quantity, id);
+            Product currentProduct = new Product(id, price, name, category, quantity);
             productList.add(currentProduct);
         }
 

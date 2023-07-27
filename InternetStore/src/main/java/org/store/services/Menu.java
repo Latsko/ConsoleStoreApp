@@ -72,7 +72,7 @@ public class Menu {
                     // here I must update lastID from RAM, because every time I call
                     // readProductsFromFile(), I invoke Category constructor, which
                     // increments lastID pole
-                    Category.setLastID(categories.get(categories.size() - 1).getID() + 1);
+                    //Category.setLastID(categories.get(categories.size() - 1).getID() + 1);
                     Category foundCategory = categories.stream()
                             .filter(category -> category.getName().equals(name))
                             .findAny()
@@ -93,7 +93,7 @@ public class Menu {
                     List<Category> categories = categoryService.getCategories();
                     Scanner scanner = new Scanner(System.in);
                     String newCategoryName;
-                    Category.setLastID(categories.get(categories.size() - 1).getID() + 1);
+                    //Category.setLastID(categories.get(categories.size() - 1).getID() + 1);
                     List<String> categoriesNames = categories.stream()
                             .map(Category::getName)
                             .toList();

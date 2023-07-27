@@ -36,9 +36,9 @@ class CategoryServiceTest {
         //given
         final List<Category> list = new ArrayList<>();
         final FileService fileService = mock(FileService.class);
-        final Category category1 = new Category("first category");
-        final Category category2 = new Category("second category");
-        final Category category3 = new Category("third category");
+        final Category category1 = new Category("first category", 1);
+        final Category category2 = new Category("second category", 2);
+        final Category category3 = new Category("third category", 3);
         list.add(category1);
         list.add(category2);
         list.add(category3);
@@ -63,7 +63,7 @@ class CategoryServiceTest {
     void removeCategoryEmptyList() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        when(fileService.readCategoriesFromFile()).thenReturn(null);
+        when(fileService.readCategoriesFromFile()).thenReturn(new ArrayList<>());
         final CategoryService categoryService = new CategoryService(fileService);
 
         //when
@@ -72,17 +72,17 @@ class CategoryServiceTest {
 
         //then
         assertThatThrownBy(callable)
-                .isInstanceOf(NullPointerException.class)
-                .hasMessage("There is no elements to remove!");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("No category under that name was found!");
     }
 
     @Test
     void removeCategoryNonEmptyList() throws FileNotFoundException {
         //given
         final List<Category> list = new ArrayList<>();
-        final Category category1 = new Category("first category");
-        final Category category2 = new Category("second category");
-        final Category category3 = new Category("third category");
+        final Category category1 = new Category("first category", 1);
+        final Category category2 = new Category("second category", 2);
+        final Category category3 = new Category("third category", 3);
         list.add(category1);
         list.add(category2);
         list.add(category3);
@@ -104,14 +104,14 @@ class CategoryServiceTest {
     void getEmptyCategoryList() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        when(fileService.readCategoriesFromFile()).thenReturn(null);
+        when(fileService.readCategoriesFromFile()).thenReturn(new ArrayList<>());
         CategoryService categoryService = new CategoryService(fileService);
 
         //when
         List<Category> categories = categoryService.getCategories();
 
         //then
-        assertThat(categories).isNull();
+        assertThat(categories).isEmpty();
     }
 
     @Test
@@ -119,9 +119,9 @@ class CategoryServiceTest {
         //given
         final FileService fileService = mock(FileService.class);
         final List<Category> categories = new ArrayList<>();
-        categories.add(new Category("test one"));
-        categories.add(new Category("test two"));
-        categories.add(new Category("test three"));
+        categories.add(new Category("test one", 1));
+        categories.add(new Category("test two", 2));
+        categories.add(new Category("test three", 3));
         when(fileService.readCategoriesFromFile()).thenReturn(categories);
         final CategoryService categoryService = new CategoryService(fileService);
 

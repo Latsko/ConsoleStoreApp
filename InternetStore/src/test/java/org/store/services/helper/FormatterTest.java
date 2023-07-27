@@ -25,7 +25,7 @@ class FormatterTest {
     void formatProduct() {
         //given
         final Category category = new Category("category name", 1);
-        final Product product = new Product(12, "product name", category, 10);
+        final Product product = new Product(0, 12, "product name", category, 10);
 
         //when
         String expected = Formatter.formatProduct(product);

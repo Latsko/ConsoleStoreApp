@@ -8,9 +8,11 @@ import java.util.List;
 
 public class CategoryService {
     private final List<Category> categories;
+    private int lastID;
 
     public CategoryService(final FileService fileService) throws FileNotFoundException {
         categories = fileService.readCategoriesFromFile();
+        lastID = categories.size();
     }
 
     public List<Category> getCategories() {
@@ -18,7 +20,7 @@ public class CategoryService {
     }
 
     public void addCategory(final String newCategoryName) {
-        categories.add(new Category(newCategoryName));
+        categories.add(new Category(newCategoryName, lastID++));
     }
 
     public void removeCategory(final String categoryToRemove) {
@@ -31,6 +33,7 @@ public class CategoryService {
         }
         categories.remove(category);
     }
+
 
     private Category findByName(final String name) {
         return categories.stream()

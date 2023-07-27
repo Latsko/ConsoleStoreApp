@@ -40,7 +40,7 @@ class OrderServiceTest {
         //given
         final OrderService orderService = new OrderService();
         final Order order = new Order("00000000", "name", "surname", "address");
-        final Product product = new Product(1, "product", new Category("Category"), 1, 1);
+        final Product product = new Product(1, 10, "product", new Category("Category", 1), 1);
         //when
         orderService.addProductToOrder(order, product, 1);
         //then
@@ -73,7 +73,7 @@ class OrderServiceTest {
     void addOrder() {
         //given
         final OrderService orderService = new OrderService();
-        
+
         //when
         orderService.addOrder("Name", "SurName", "Address");
         orderService.addOrder("Name", "SurName", "Address");

@@ -3,41 +3,28 @@ package org.store.entities;
 import java.util.Objects;
 
 public class Product {
-    public static int lastID = 0;
+    private final static String NAME_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$";
     final private int ID;
     private final double price;
     private final String name;
     private final Category category;
     private final int quantity;
 
-    public Product(final double price, final String name, final Category category, final int quantity) {
+    public Product(final int id, final double price, final String name, final Category category, final int quantity) {
         checkPrice(price);
         checkQuantity(quantity);
         checkCategory(category);
         checkName(name);
-        this.price = price;
-        this.quantity = quantity;
-        this.name = name;
-        this.category = category;
-        this.ID = lastID++;
-    }
-
-    public Product(final double price, final String name, final Category category, final int quantity, final int id) {
-        checkPrice(price);
-        checkQuantity(quantity);
-        checkCategory(category);
-        checkName(name);
-        this.price = price;
-        this.quantity = quantity;
-        this.name = name;
-        this.category = category;
         this.ID = id;
-        lastID++;
+        this.price = price;
+        this.quantity = quantity;
+        this.name = name;
+        this.category = category;
     }
 
 
     private void checkName(final String name) {
-        if (!name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$") || name.length() > 50) {
+        if (!name.matches(NAME_VALIDATION_REGEX) || name.length() > 50) {
             throw new IllegalArgumentException("Name should have no more than 50 characters and consist up to 8 words");
         }
     }
@@ -48,20 +35,20 @@ public class Product {
         }
     }
 
-    private void checkPrice(final double price){
+    private void checkPrice(final double price) {
         if (price < 0) {
             throw new IllegalArgumentException("Price lesser then zero cannot be assigned");
         }
     }
 
-    private void checkQuantity(final int quantity){
+    private void checkQuantity(final int quantity) {
         if (quantity < 0) {
             throw new IllegalArgumentException("Quantity lesser then zero cannot be assigned");
         }
     }
 
     public static boolean nameIsCorrect(final String name) {
-        return name.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$");
+        return name.matches(NAME_VALIDATION_REGEX);
     }
 
     public int getID() {

@@ -33,11 +33,11 @@ class ProductServiceTest {
     void getNonEmptyProductsList() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        final Category testCategory = new Category("test");
+        final Category testCategory = new Category("test", 1);
         final List<Product> products = new ArrayList<>();
-        products.add(new Product(1, "test product 1", testCategory, 10));
-        products.add(new Product(2, "test product 2", testCategory, 20));
-        products.add(new Product(3, "test product 3", testCategory, 30));
+        products.add(new Product(1, 10, "test product 1", testCategory, 10));
+        products.add(new Product(2, 20, "test product 2", testCategory, 20));
+        products.add(new Product(3, 30, "test product 3", testCategory, 30));
         when(fileService.readProductsFromFile()).thenReturn(products);
         ProductService productService = new ProductService(fileService);
 
@@ -52,11 +52,11 @@ class ProductServiceTest {
     void getProductByID() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        final Category testCategory = new Category("test");
+        final Category testCategory = new Category("test", 1);
         final List<Product> products = new ArrayList<>();
-        products.add(new Product(1, "test product 1", testCategory, 10));
-        products.add(new Product(2, "test product 2", testCategory, 20));
-        products.add(new Product(3, "test product 3", testCategory, 30));
+        products.add(new Product(0, 100, "test product 1", testCategory, 10));
+        products.add(new Product(1, 200, "test product 2", testCategory, 20));
+        products.add(new Product(2, 300, "test product 3", testCategory, 30));
         when(fileService.readProductsFromFile()).thenReturn(products);
         ProductService productService = new ProductService(fileService);
 
@@ -76,11 +76,11 @@ class ProductServiceTest {
     void removeProduct() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        final Category testCategory = new Category("test");
+        final Category testCategory = new Category("test", 1);
         final List<Product> products = new ArrayList<>();
-        final Product product1 = new Product(1, "test product 1", testCategory, 10);
-        final Product product2 = new Product(2, "test product 2", testCategory, 20);
-        final Product product3 = new Product(3, "test product 3", testCategory, 30);
+        final Product product1 = new Product(1, 10, "test product 1", testCategory, 1);
+        final Product product2 = new Product(2, 20, "test product 2", testCategory, 2);
+        final Product product3 = new Product(3, 30, "test product 3", testCategory, 3);
         products.add(product1);
         products.add(product2);
         products.add(product3);

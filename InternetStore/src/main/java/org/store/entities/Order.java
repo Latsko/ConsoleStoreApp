@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Order {
+    private final static String NAME_VALIDATION_REGEX = "^[ąęŁłśćźńóżA-Za-z]+$";
+    private final static String ADDRESS_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$";
+    private final static String ORDER_NUMBER_VALIDATION_REGEX = "^[0-9]{8}$";
     private static int lastID = 0;
     private final int ID;
     private final String orderNumber;
@@ -31,11 +34,11 @@ public class Order {
     }
 
     public static boolean isClientAddressCorrect(final String address) {
-        return !address.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$");
+        return !address.matches(ADDRESS_VALIDATION_REGEX);
     }
 
     public static boolean isClientNameCorrect(final String name) {
-        return name.matches("^[ąęŁłśćźńóżA-Za-z]+$");
+        return name.matches(NAME_VALIDATION_REGEX);
     }
 
     public static boolean isClientSurNameCorrect(final String surName) {
@@ -43,19 +46,19 @@ public class Order {
     }
 
     private void checkClientFullName(final String name, final String surName) {
-        if (!name.matches("^[ąęŁłśćźńóżA-Za-z]+$") || !surName.matches("^[ąęŁłśćźńóżA-Za-z]+$")) {
+        if (!name.matches(NAME_VALIDATION_REGEX) || !surName.matches(NAME_VALIDATION_REGEX)) {
             throw new IllegalArgumentException("Client name and surname must consist only of letters");
         }
     }
 
     private void checkClientAddress(final String address) {
-        if (!address.matches("^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$")) {
+        if (!address.matches(ADDRESS_VALIDATION_REGEX)) {
             throw new IllegalArgumentException("Client address must consist with no more than 6 words");
         }
     }
 
     private void checkOrderNumber(final String number) {
-        if (!number.matches("^[0-9]{8}$")) {
+        if (!number.matches(ORDER_NUMBER_VALIDATION_REGEX)) {
             throw new IllegalArgumentException("Order number must be 8-digit number");
         }
     }
