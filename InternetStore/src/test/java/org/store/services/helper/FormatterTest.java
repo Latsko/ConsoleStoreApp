@@ -38,7 +38,7 @@ class FormatterTest {
     @Test
     void formatOrder() {
         //given
-        final Order order = new Order("00000000", "Name", "Surname", "address");
+        final Order order = new Order(0, "00000000", "Name", "Surname", "address");
 
         //when
         String expected = Formatter.formatOrder(order);

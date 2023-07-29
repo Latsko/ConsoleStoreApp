@@ -3,16 +3,19 @@ package org.store.services;
 import org.store.entities.Order;
 import org.store.entities.OrderStatus;
 import org.store.entities.Product;
+import org.store.services.fileHandling.FileService;
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Random;
 
 public class OrderService {
     private final List<Order> orderList;
+    private int lastID;
 
-    public OrderService() {
-        orderList = new ArrayList<>();
+    public OrderService(final FileService fileService) throws FileNotFoundException {
+        orderList = fileService.readOrdersFromFile();
+        lastID = orderList.size();
     }
 
     public void removeOrder(final Order searched) {
@@ -42,7 +45,7 @@ public class OrderService {
     }
 
     public void addOrder(final String name, final String surName, final String address) {
-        orderList.add(new Order(createUniqueOrderNumber(), name, surName, address));
+        orderList.add(new Order(lastID++, createUniqueOrderNumber(), name, surName, address));
     }
 
     private String createUniqueOrderNumber() {

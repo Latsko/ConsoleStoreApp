@@ -8,7 +8,6 @@ public class Order {
     private final static String NAME_VALIDATION_REGEX = "^[ąęŁłśćźńóżA-Za-z]+$";
     private final static String ADDRESS_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$";
     private final static String ORDER_NUMBER_VALIDATION_REGEX = "^[0-9]{8}$";
-    private static int lastID = 0;
     private final int ID;
     private final String orderNumber;
     private final String clientName;
@@ -18,7 +17,7 @@ public class Order {
     private double numberSum;
     private OrderStatus status;
 
-    public Order(final String orderNumber, final String clientName, final String clientSurName, final String clientAddress) {
+    public Order(final int id, final String orderNumber, final String clientName, final String clientSurName, final String clientAddress) {
         checkClientFullName(clientName, clientSurName);
         checkClientAddress(clientAddress);
         checkOrderNumber(orderNumber);
@@ -27,10 +26,32 @@ public class Order {
         this.clientName = clientName;
         this.clientSurName = clientSurName;
         this.clientAddress = clientAddress;
-        this.ID = lastID++;
+        this.ID = id;
         this.status = OrderStatus.CREATED;
         this.basket = new HashMap<>();
         numberSum = 0;
+    }
+
+    public Order(final int id,
+                 final String orderNumber,
+                 final String clientName,
+                 final String clientSurName,
+                 final String clientAddress,
+                 final double numberSum,
+                 final OrderStatus status,
+                 final Map<Product, Integer> basket) {
+        checkClientFullName(clientName, clientSurName);
+        checkClientAddress(clientAddress);
+        checkOrderNumber(orderNumber);
+
+        this.orderNumber = orderNumber;
+        this.clientName = clientName;
+        this.clientSurName = clientSurName;
+        this.clientAddress = clientAddress;
+        this.ID = id;
+        this.status = status;
+        this.basket = basket;
+        this.numberSum = numberSum;
     }
 
     public static boolean isClientAddressCorrect(final String address) {

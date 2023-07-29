@@ -6,6 +6,7 @@ import org.store.services.fileHandling.FileService;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ProductService {
     private final List<Product> products;
@@ -33,7 +34,7 @@ public class ProductService {
         if (searched == null) {
             throw new IllegalArgumentException("Argument in this function is null!");
         }// products.removeif()
-        products.remove(searched);
+        products.removeIf(Predicate.isEqual(searched));
     }
 
     public void addProduct(final String inputProductName, final double inputPrice, final String inputCategoryName, final int inputQuantity) {

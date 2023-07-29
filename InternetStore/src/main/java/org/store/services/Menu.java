@@ -23,7 +23,7 @@ public class Menu {
         fileService = new FileService();
         categoryService = new CategoryService(fileService);
         productService = new ProductService(fileService);
-        orderService = new OrderService();
+        orderService = new OrderService(fileService);
         boolean exit = false;
 
         while (!exit) {

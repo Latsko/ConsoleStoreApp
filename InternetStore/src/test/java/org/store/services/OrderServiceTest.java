@@ -6,24 +6,28 @@ import org.store.entities.Category;
 import org.store.entities.Order;
 import org.store.entities.OrderStatus;
 import org.store.entities.Product;
+import org.store.services.fileHandling.FileService;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
 
 class OrderServiceTest {
 
     @Test
-    void removeOrder() {
+    void removeOrder() throws FileNotFoundException {
         //given
-        OrderService orderService = new OrderService();
+        final FileService fileService = mock(FileService.class);
+        OrderService orderService = new OrderService(fileService);
 
         //when
         final ThrowableAssert.ThrowingCallable callable1 = () ->
                 orderService.removeOrder(null);
         final ThrowableAssert.ThrowingCallable callable2 = () ->
-                orderService.removeOrder(new Order("00000000", "name", "surname", "address"));
+                orderService.removeOrder(new Order(0, "00000000", "name", "surname", "address"));
 
         //then
         assertThatThrownBy(callable1)
@@ -36,10 +40,11 @@ class OrderServiceTest {
     }
 
     @Test
-    void addProductToOrder() {
+    void addProductToOrder() throws FileNotFoundException {
         //given
-        final OrderService orderService = new OrderService();
-        final Order order = new Order("00000000", "name", "surname", "address");
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
+        final Order order = new Order(0, "00000000", "name", "surname", "address");
         final Product product = new Product(1, 10, "product", new Category("Category", 1), 1);
         //when
         orderService.addProductToOrder(order, product, 1);
@@ -49,13 +54,14 @@ class OrderServiceTest {
     }
 
     @Test
-    void changeStatus() {
+    void changeStatus() throws FileNotFoundException {
         //given
-        Order order1 = new Order("00000001", "name", "surname", "address");
-        Order order2 = new Order("00000002", "name", "surname", "address");
-        Order order3 = new Order("00000003", "name", "surname", "address");
-        Order order4 = new Order("00000004", "name", "surname", "address");
-        final OrderService orderService = new OrderService();
+        Order order1 = new Order(0, "00000001", "name", "surname", "address");
+        Order order2 = new Order(1, "00000002", "name", "surname", "address");
+        Order order3 = new Order(2, "00000003", "name", "surname", "address");
+        Order order4 = new Order(3, "00000004", "name", "surname", "address");
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
         //when
         orderService.changeStatus(1, order1);
         orderService.changeStatus(2, order2);
@@ -70,9 +76,10 @@ class OrderServiceTest {
     }
 
     @Test
-    void addOrder() {
+    void addOrder() throws FileNotFoundException {
         //given
-        final OrderService orderService = new OrderService();
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
 
         //when
         orderService.addOrder("Name", "SurName", "Address");
@@ -84,9 +91,10 @@ class OrderServiceTest {
     }
 
     @Test
-    void getEmptyOrderList() {
+    void getEmptyOrderList() throws FileNotFoundException {
         //given
-        final OrderService orderService = new OrderService();
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
 
         //when
         final List<Order> orderList = orderService.getOrderList();

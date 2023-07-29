@@ -5,7 +5,9 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.store.entities.Category;
 import org.store.entities.Order;
+import org.store.entities.OrderStatus;
 import org.store.entities.Product;
+import org.store.services.ProductService;
 import org.store.services.helper.CreateData;
 
 import java.io.File;
@@ -13,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,25 +32,26 @@ public class FileService {
         }
     }
 
-//    public List<Order> readOrdersFromFile() throws FileNotFoundException {
-//        File file = CreateData.getOrdersPath().toFile();
-//        List<Order> orderList = new ArrayList<>();
-//        JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
-//        for (int i = 0; i < orderList.size(); i++) {
-//            int id = read.getJSONObject(i).getInt("id");
-//            String orderNum = read.getJSONObject(i).getString("orderNumber");
-//            String clientName = read.getJSONObject(i).getString("clientName");
-//            String clientSurname = read.getJSONObject(i).getString("clientSurname");
-//            String clientAddress = read.getJSONObject(i).getString("address");
-//            double orderSum = read.getJSONObject(i).getDouble("orderSum");
-//            OrderStatus orderStatus = OrderStatus.getOrderFromString(read.getJSONObject(i).getString("status"));
-//            // do no know how to read collection which contains collection
-//            JSONArray basket = read.getJSONObject(i).getJSONArray("basket");
-//            // then make a method, which will take JSONArray, and returns Map<Product, Integer>
-//            // to be able to make a basket
-//        }
-//        return null;
-//    }
+    public List<Order> readOrdersFromFile() throws FileNotFoundException {
+        File file = CreateData.getOrdersPath().toFile();
+        List<Order> orderList = new ArrayList<>();
+        JSONArray read = new JSONArray(new JSONTokener(new FileInputStream(file)));
+        for (int i = 0; i < read.length(); i++) {
+            int id = read.getJSONObject(i).getInt("id");
+            String orderNum = read.getJSONObject(i).getString("orderNumber");
+            String clientName = read.getJSONObject(i).getString("clientName");
+            String clientSurname = read.getJSONObject(i).getString("clientSurname");
+            String clientAddress = read.getJSONObject(i).getString("address");
+            double orderSum = read.getJSONObject(i).getDouble("orderSum");
+            String statusString = read.getJSONObject(i).getString("status");
+            OrderStatus status = OrderStatus.getOrderFromString(statusString);
+            JSONArray basket = read.getJSONObject(i).getJSONArray("basket");
+
+            Map<Product, Integer> basketMap = JSONArrayToMap(basket);
+            orderList.add(new Order(id, orderNum, clientName, clientSurname, clientAddress, orderSum, status, basketMap));
+        }
+        return orderList;
+    }
 
     public List<Product> readProductsFromFile() throws FileNotFoundException {
         File file = CreateData.getProductsPath().toFile();
@@ -125,6 +129,7 @@ public class FileService {
         if (newOrders != null) {
             for (Order order : newOrders) {
                 jsonObjects.put(new JSONObject()
+                        .put("id", order.getID())
                         .put("orderNumber", order.getOrderNumber())
                         .put("basket", mapToJSONArray(order.getBasket()))
                         .put("clientName", order.getClientName())
@@ -148,6 +153,18 @@ public class FileService {
             result.put(new JSONObject()
                     .put("product", entry.getKey().getID())
                     .put("quantity", entry.getValue()));
+        }
+
+        return result;
+    }
+
+    private Map<Product, Integer> JSONArrayToMap(final JSONArray jsonArray) throws FileNotFoundException {
+        ProductService productService = new ProductService(this);
+        Map<Product, Integer> result = new HashMap<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            int productID = jsonArray.getJSONObject(i).getInt("product");
+            int quantity = jsonArray.getJSONObject(i).getInt("quantity");
+            result.put(productService.getProductByID(productID), quantity);
         }
 
         return result;
