@@ -4,7 +4,7 @@ import latsko.store.entities.Category;
 import latsko.store.entities.Order;
 import latsko.store.entities.OrderStatus;
 import latsko.store.entities.Product;
-import latsko.store.services.fileHandling.FileService;
+import latsko.store.services.file_handling.FileService;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 

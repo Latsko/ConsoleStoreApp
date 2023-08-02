@@ -1,4 +1,4 @@
-package latsko.store.services.fileHandling;
+package latsko.store.services.file_handling;
 
 import latsko.store.entities.Category;
 import latsko.store.entities.Order;
@@ -10,24 +10,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class FileService {
-    public FileService() throws FileNotFoundException {
+    public FileService() throws IOException {
         File productFile = CreateData.getProductsPath().toFile();
         File categoryFile = CreateData.getCategoriesPath().toFile();
 
-        if (!productFile.exists()) {
+        if (productFile.createNewFile()) {
             createProductsInFile();
         }
-        if (!categoryFile.exists()) {
+        if (categoryFile.createNewFile()) {
             createCategoriesInFile();
         }
     }

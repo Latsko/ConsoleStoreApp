@@ -2,7 +2,7 @@ package latsko.store.services;
 
 import latsko.store.entities.Category;
 import latsko.store.entities.Product;
-import latsko.store.services.fileHandling.FileService;
+import latsko.store.services.file_handling.FileService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

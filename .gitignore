@@ -4,6 +4,9 @@ InternetStore/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+function_programming17.iml
+data/*
+.idea/*
 .idea/.gitignore
 .idea/compiler.xml
 .idea/encodings.xml

@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Order {
-    private final static String NAME_VALIDATION_REGEX = "^[ąęŁłśćźńóżA-Za-z]+$";
-    private final static String ADDRESS_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$";
-    private final static String ORDER_NUMBER_VALIDATION_REGEX = "^[0-9]{8}$";
+    private static final String NAME_VALIDATION_REGEX = "^[ąęŁłśćźńóżA-Za-z]+$";
+    private static final String ADDRESS_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[\\\\/ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,5}$";
+    private static final String ORDER_NUMBER_VALIDATION_REGEX = "^\\d{8}$";
     private final int id;
     private final String orderNumber;
     private final String clientName;

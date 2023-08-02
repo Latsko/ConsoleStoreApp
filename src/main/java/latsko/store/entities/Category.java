@@ -1,7 +1,7 @@
 package latsko.store.entities;
 
 public record Category(String name, int id) {
-    private final static String NAME_VALIDATION_REGEX = "(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$";
+    private static final String NAME_VALIDATION_REGEX = "(^[ąęŁłśćźńóżA-Za-z]+(\\s[ąęŁłśćźńóżA-Za-z]+){0,3})$";
 
     public Category {
         checkName(name);

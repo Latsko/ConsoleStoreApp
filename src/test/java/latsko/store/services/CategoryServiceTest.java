@@ -1,7 +1,7 @@
 package latsko.store.services;
 
 import latsko.store.entities.Category;
-import latsko.store.services.fileHandling.FileService;
+import latsko.store.services.file_handling.FileService;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 

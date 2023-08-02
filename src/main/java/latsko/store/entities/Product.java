@@ -1,7 +1,7 @@
 package latsko.store.entities;
 
 public record Product(int id, double price, String name, Category category, int quantity) {
-    private final static String NAME_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$";
+    private static final String NAME_VALIDATION_REGEX = "^([ąęŁłśćźńóża-zA-Z+\\-0-9.]+)(\\s[ąęŁłśćźńóża-zA-Z+\\-0-9.]+){0,7}$";
 
     public Product {
         checkPrice(price);

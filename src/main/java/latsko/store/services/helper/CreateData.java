@@ -7,9 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class CreateData {
-    private static final Path productsPath = Paths.get("src\\main\\java\\org\\store\\data", "products.json");
-    private static final Path categoriesPath = Paths.get("src\\main\\java\\org\\store\\data", "categories.json");
-    private static final Path ordersPath = Paths.get("src\\main\\java\\org\\store\\data", "orders.json");
+    private static final String DATA_PATH_FOR_FILES = "data";
+    private static final Path productsPath = Paths.get(DATA_PATH_FOR_FILES, "products.json");
+    private static final Path categoriesPath = Paths.get(DATA_PATH_FOR_FILES, "categories.json");
+    private static final Path ordersPath = Paths.get(DATA_PATH_FOR_FILES, "orders.json");
 
     public static Path getProductsPath() {
         return productsPath;

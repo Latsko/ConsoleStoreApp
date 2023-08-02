@@ -3,9 +3,11 @@ package latsko.store.services;
 import latsko.store.entities.Order;
 import latsko.store.entities.OrderStatus;
 import latsko.store.entities.Product;
-import latsko.store.services.fileHandling.FileService;
+import latsko.store.services.file_handling.FileService;
+import latsko.store.services.helper.CreateData;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -15,7 +17,11 @@ public class OrderService {
     private int lastID;
 
     public OrderService(final FileService fileService) throws FileNotFoundException {
-        orderList = fileService.readOrdersFromFile();
+        if (CreateData.getOrdersPath().toFile().exists()) {
+            orderList = fileService.readOrdersFromFile();
+        } else {
+            orderList = new ArrayList<>();
+        }
         updateID();
     }
 
@@ -43,6 +49,7 @@ public class OrderService {
             case 2 -> searched.setStatus(OrderStatus.PREPARING);
             case 3 -> searched.setStatus(OrderStatus.SENT);
             case 4 -> searched.setStatus(OrderStatus.CANCELLED);
+            default -> System.out.println("Searched not found");
         }
     }
 
