@@ -45,10 +45,14 @@ public class CategoryService {
     }
 
     private void updateID() {
-        lastID = categories.stream()
-                .mapToInt(Category::id)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+        if (categories.isEmpty()) {
+            lastID = 0;
+        } else {
+            lastID = categories.stream()
+                    .mapToInt(Category::id)
+                    .max()
+                    .orElseThrow(NoSuchElementException::new);
+        }
         lastID++;
     }
 }

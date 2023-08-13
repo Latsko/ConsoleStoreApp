@@ -9,6 +9,7 @@ import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,10 +19,10 @@ import static org.mockito.Mockito.mock;
 class OrderServiceTest {
 
     @Test
-    void removeOrder() throws FileNotFoundException {
+    void removeOrderWithEmptyList() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
-        OrderService orderService = new OrderService(fileService);
+        final OrderService orderService = new OrderService(fileService);
 
         //when
         final ThrowableAssert.ThrowingCallable callable1 = () ->
@@ -40,7 +41,27 @@ class OrderServiceTest {
     }
 
     @Test
-    void addProductToOrder() throws FileNotFoundException {
+    void removeOrderWithNonEmptyList() throws FileNotFoundException {
+        //given
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
+        orderService.addOrder("NameOne", "SurnameOne", "Address1");
+        orderService.addOrder("NameTwo", "SurnameTwo", "Address2");
+        orderService.addOrder("NameThree", "SurnameThree", "Address3");
+        final Order orderToRemove = orderService.getOrderList().get(1);
+        final List<Order> expected = new ArrayList<>();
+        expected.add(orderService.getOrderList().get(0));
+        expected.add(orderService.getOrderList().get(2));
+
+        //when
+        orderService.removeOrder(orderToRemove);
+
+        //then
+        assertThat(orderService.getOrderList()).isEqualTo(expected);
+    }
+
+    @Test
+    void addProductToOrderWithEmptyBasket() throws FileNotFoundException {
         //given
         final FileService fileService = mock(FileService.class);
         final OrderService orderService = new OrderService(fileService);
@@ -51,6 +72,28 @@ class OrderServiceTest {
         //then
         assertThat(order.getBasket()).hasSize(1);
         assertThat(order.getBasket()).containsKey(product);
+    }
+
+    @Test
+    void addProductToOrderWithNonEmptyBasket() throws FileNotFoundException {
+        //given
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
+        final Order order = new Order(0, "00000000", "name", "surname", "address");
+        final Product product1 = new Product(1, 10, "product1", new Category("Category", 1), 1);
+        final Product product2 = new Product(2, 10, "product2", new Category("Category", 2), 1);
+        final Product product3 = new Product(3, 10, "product3", new Category("Category", 3), 1);
+        orderService.addProductToOrder(order, product1, 1);
+        orderService.addProductToOrder(order, product2, 1);
+
+        //when
+        orderService.addProductToOrder(order, product3, 1);
+
+        //then
+        assertThat(order.getBasket()).hasSize(3);
+        assertThat(order.getBasket()).containsKey(product1);
+        assertThat(order.getBasket()).containsKey(product2);
+        assertThat(order.getBasket()).containsKey(product3);
     }
 
     @Test
@@ -101,5 +144,21 @@ class OrderServiceTest {
 
         //then
         assertThat(orderList).isEmpty();
+    }
+
+    @Test
+    void getNonEmptyOrderList() throws FileNotFoundException {
+        //given
+        final FileService fileService = mock(FileService.class);
+        final OrderService orderService = new OrderService(fileService);
+        orderService.addOrder("Name", "SurName", "Address");
+        orderService.addOrder("Name", "SurName", "Address");
+        orderService.addOrder("Name", "SurName", "Address");
+
+        //when
+        final List<Order> orderList = orderService.getOrderList();
+
+        //then
+        assertThat(orderList).hasSize(3);
     }
 }

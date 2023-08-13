@@ -84,10 +84,14 @@ public class OrderService {
     }
 
     private void updateID() {
-        lastID = orderList.stream()
-                .mapToInt(Order::getId)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+        if (orderList.isEmpty()) {
+            lastID = 0;
+        } else {
+            lastID = orderList.stream()
+                    .mapToInt(Order::getId)
+                    .max()
+                    .orElseThrow(NoSuchElementException::new);
+        }
         lastID++;
     }
 }

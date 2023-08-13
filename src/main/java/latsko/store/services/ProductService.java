@@ -44,10 +44,14 @@ public class ProductService {
     }
 
     private void updateID() {
-        lastID = products.stream()
-                .mapToInt(Product::id)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+        if (products.isEmpty()) {
+            lastID = 0;
+        } else {
+            lastID = products.stream()
+                    .mapToInt(Product::id)
+                    .max()
+                    .orElseThrow(NoSuchElementException::new);
+        }
         lastID++;
     }
 }
