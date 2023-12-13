@@ -97,7 +97,6 @@ public class Menu {
         } while (true);
 
         categoryService.addCategory(newCategoryName);
-        //zapis
         fileService.writeCategories(categories);
 
         System.out.println("\tNowa kategoria została dodana");

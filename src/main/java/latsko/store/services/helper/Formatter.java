@@ -6,6 +6,11 @@ import latsko.store.entities.Product;
 
 import java.util.stream.Collectors;
 
+/**
+ * This class exists to format different objects given as a parameter.
+ * Formatted objects are returned as a string for a better visual
+ * representation in console menu.
+ **/
 public class Formatter {
     public static String formatCategory(Category category) {
         return "ID [" + category.id() + "] " + category.name();

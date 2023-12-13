@@ -6,6 +6,11 @@ import latsko.store.entities.Product;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * This class simply serves to contain constant fields used for file handling
+ * and generating categories and products in case there is no corresponding
+ * .json files.
+ **/
 public class CreateData {
     private static final String DATA_PATH_FOR_FILES = "data";
     private static final Path productsPath = Paths.get(DATA_PATH_FOR_FILES, "products.json");
